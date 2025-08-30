@@ -1,0 +1,11 @@
+@import "@fontsource-variable/inter";
+:root{--bg:#0b1020;--panel:#0f172a;--fg:#e5e7eb;--muted:#9ca3af;--brand:#60a5fa;--brand2:#22d3ee}
+@media (prefers-color-scheme: light){:root{--bg:#f8fafc;--panel:#fff;--fg:#0f172a;--muted:#334155;--brand:#2563eb;--brand2:#06b6d4}}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter Variable,Inter,system-ui}
+a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+.gradient-bg{position:fixed;inset:-20% -20% auto -20%;height:80vh;z-index:-1;filter:blur(60px);opacity:.35;
+background:radial-gradient(900px 300px at 20% 20%, var(--brand) 0%, transparent 55%),
+radial-gradient(700px 260px at 80% 10%, var(--brand2) 0%, transparent 60%);animation:float 18s ease-in-out infinite alternate}
+@keyframes float{from{transform:translateY(-2%)}to{transform:translateY(2%)}}
+.glass{background:color-mix(in srgb, var(--panel) 85%, transparent);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:0 6px 32px rgba(0,0,0,.25)}
+.container{max-width:1000px;margin:0 auto;padding:24px}

@@ -1,0 +1,9 @@
+---
+const links=[{href:'#proyectos',label:'Proyectos'},{href:'#servicios',label:'Servicios'},{href:'#contacto',label:'Contacto'}];
+---
+<nav class="container mt-6 flex items-center justify-between">
+  <a href="/" class="font-semibold tracking-wide">TuNombre<span class="text-brand">.</span></a>
+  <div class="flex gap-5 text-sm">
+    {links.map(l => <a href={l.href} class="hover:underline">{l.label}</a>)}
+  </div>
+</nav>

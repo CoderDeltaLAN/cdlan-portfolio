@@ -1,0 +1,14 @@
+---
+const social=[{href:"https://github.com/CoderDeltaLAN",label:"GitHub"},{href:"mailto:tu.email@example.com",label:"Email"},{href:"#contacto",label:"Agendar"}];
+---
+<section class="container mt-12">
+  <div class="gradient-bg"></div>
+  <div class="glass p-8 md:p-12">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Construyo <span class="text-brand">productos</span> hermosos,<br/>seguros y medibles.</h1>
+    <p class="mt-4 text-[15px] text-[var(--muted)] max-w-2xl">Diseño sistemas con CI verde, performance alta, firma/rollback y DX impecable.</p>
+    <div class="mt-6 flex gap-3 flex-wrap">
+      {social.map(s => <a href={s.href} class="px-4 py-2 rounded-lg border hover:opacity-90">{s.label}</a>)}
+      <a href="#proyectos" class="px-4 py-2 rounded-lg border bg-[var(--brand)] text-black font-semibold">Ver proyectos</a>
+    </div>
+  </div>
+</section>
