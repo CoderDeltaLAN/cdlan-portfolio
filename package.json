@@ -12,5 +12,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
+  },
+  "name": "cdlan-portfolio",
+  "author": "CoderDeltaLAN <coderdeltalan.cargo784@8alias.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/CoderDeltaLAN/cdlan-portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/CoderDeltaLAN/cdlan-portfolio/issues"
   }
 }
