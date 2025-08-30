@@ -1,0 +1,11 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Markdown lint
+        uses: avto-dev/markdown-lint@v1
+        with:
+          config: '{"no-inline-html": false}'
