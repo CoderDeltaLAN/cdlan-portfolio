@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Portafolio de CoderDeltaLAN — Python · Automatización · APIs · DevOps"/>
+  <title>CoderDeltaLAN — Portfolio</title>
+
+  <!-- Inter (sin FOUT notable) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap">
+
+  <style>
+    :root{
+      --bg:#0a0a1a;
+      --bg2:#121225;
+      --panel:#10162a;
+      --text:#e7e9f0;
+      --muted:#a8b0c2;
+      --accent:#4d8af0;
+      --accent-2:#7aa9ff;
+      --particle:#4d8af0;
+      --card:#151b30;
+      --radius:16px;
+      --glass:rgba(255,255,255,.06);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 50% -200px,#0f1530 0%,var(--bg) 40%) fixed;
+      overflow-x:hidden;
+    }
+    .frame{position:fixed; inset:18px; pointer-events:none; z-index:2;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      box-shadow:inset 0 0 0 1px rgba(77,138,240,.08);}
+    #bg-net{position:fixed; inset:0; z-index:-1;}
+    .wrap{max-width:1100px; margin:0 auto; padding:100px 22px 70px;}
+    .hero{text-align:center; margin-bottom:26px;}
+    .title{display:inline-block; font-weight:800; letter-spacing:.5px;
+      font-size:clamp(28px,6vw,56px); line-height:1.05;
+      background:linear-gradient(90deg,#cfe0ff 0%,#ffffff 35%,#a6c1ff 70%,#dbe6ff 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      position:relative;}
+    .title:hover::after{content:""; position:absolute; inset:-8px;
+      background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.10) 50%,transparent 60%);
+      filter:blur(6px); mix-blend-mode:screen; animation:sweep .8s ease;}
+    @keyframes sweep{from{transform:translateX(-28%)}to{transform:translateX(28%)}}
+    .subtitle{color:var(--muted); margin-top:10px; font-size:18px;}
+    .top-actions{margin:26px auto 38px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+    .btn{--glow: 0 0 14px rgba(77,138,240,.55), 0 0 28px rgba(77,138,240,.35);
+      display:inline-flex; align-items:center; gap:10px; padding:12px 20px; border-radius:999px;
+      border:1px solid rgba(77,138,240,.45);
+      background:linear-gradient(180deg, rgba(77,138,240,.10), rgba(77,138,240,.04));
+      color:var(--text); text-decoration:none; font-weight:600;
+      transition:.28s ease; position:relative; overflow:hidden;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);}
+    .btn::before{content:""; position:absolute; inset:0; left:-100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+      transition:.6s;}
+    .btn:hover{ transform:translateY(-2px); border-color:var(--accent-2); box-shadow:var(--glow) }
+    .btn:hover::before{ left:100% }
+    .section{margin:26px 0 10px; display:grid; grid-template-columns:1.2fr .8fr; gap:18px;}
+    @media (max-width:900px){ .section{ grid-template-columns:1fr; } }
+    .about{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius);
+      padding:20px; box-shadow:0 10px 40px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);}
+    .about h2{font-size:22px; margin-bottom:10px; display:flex; align-items:center; gap:10px; color:#d9e6ff;}
+    .grid{display:grid; gap:12px; grid-template-columns:repeat(2, minmax(0,1fr));}
+    @media (max-width:560px){ .grid{ grid-template-columns:1fr; } }
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px 14px 12px;
+      transition:.22s ease; box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);}
+    .card:hover{transform:translateY(-4px); border-color:rgba(77,138,240,.5);
+      box-shadow:0 0 16px rgba(77,138,240,.55), 0 0 34px rgba(77,138,240,.35), 0 10px 40px rgba(0,0,0,.55), inset 0 0 16px rgba(77,138,240,.25);}
+    .k{font-size:12px; color:#bcd1ff; letter-spacing:.3px; text-transform:uppercase;}
+    .v{font-size:15px; color:#eaf1ff; margin-top:4px; line-height:1.5}
+    .email{display:flex; align-items:center; justify-content:space-between; gap:12px;
+      background:linear-gradient(180deg, rgba(77,138,240,.08), rgba(77,138,240,.02));
+      border:1px dashed rgba(77,138,240,.45); padding:12px 14px; border-radius:12px; user-select:none; cursor:pointer;}
+    .email:hover{ border-color:var(--accent-2); box-shadow:0 0 24px rgba(77,138,240,.25) inset }
+    .toast{position:fixed; top:18px; left:50%; transform:translateX(-50%) translateY(-20px);
+      background:#0b1220; color:#dff2ff; border:1px solid rgba(77,138,240,.6);
+      border-radius:999px; padding:10px 16px; z-index:5;
+      box-shadow:0 6px 26px rgba(0,0,0,.45), 0 0 18px rgba(77,138,240,.35);
+      opacity:0; pointer-events:none; transition:.22s ease;}
+    .toast.show{ opacity:1; transform:translateX(-50%) translateY(0) }
+    .projects{margin-top:18px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px;
+      box-shadow:0 10px 40px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);}
+    .projects h2{font-size:22px; margin-bottom:8px; color:#d9e6ff}
+    .cards{display:grid; gap:12px; grid-template-columns:repeat(2,minmax(0,1fr));}
+    @media (max-width:560px){ .cards{ grid-template-columns:1fr; } }
+    .p-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;}
+    .p-title{font-weight:700}
+    .badge{font-size:12px; border:1px solid rgba(255,255,255,.12); padding:2px 8px; border-radius:999px; color:#cfe0ff}
+    footer{text-align:center; color:var(--muted); margin:38px 0 8px;}
+  </style>
+</head>
+<body>
+  <canvas id="bg-net"></canvas>
+  <div class="frame"></div>
+  <div class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="title">CoderDeltaLAN</h1>
+      <p class="subtitle">Python · Automatización · APIs · DevOps</p>
+      <div class="top-actions">
+        <a class="btn" href="https://github.com/CoderDeltaLAN" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn" id="btn-email" type="button">Email</button>
+        <a class="btn" href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener">Repositorios</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <!-- ... aquí igual que tu archivo original, no se modifica ... -->
+
+    <!-- PROYECTOS DESTACADOS -->
+    <section class="projects">
+      <h2>🚀 Proyectos destacados</h2>
+      <div class="cards">
+        <a class="card" href="https://github.com/CoderDeltaLAN/ai-patch-verifier" target="_blank" rel="noopener">
+          <div class="p-head">
+            <div class="p-title">ai-patch-verifier</div>
+            <span class="badge">Python · CLI</span>
+          </div>
+          <div class="v">Verifica parches generados por IA: lint, pruebas y seguridad en verde.</div>
+        </a>
+        <a class="card" href="https://github.com/CoderDeltaLAN/quip-api-es" target="_blank" rel="noopener">
+          <div class="p-head">
+            <div class="p-title">quip-api-es</div>
+            <span class="badge">FastAPI · API</span>
+          </div>
+          <div class="v">API en español para interacción con Quip, validada con CI/CD completo.</div>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      Author: CoderDeltaLAN — <code>coderdeltalan.cargo784@8alias.com</code><br/>
+      License: MIT · © 2025 CoderDeltaLAN
+    </footer>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">Email copiado al portapapeles</div>
+
+  <script>
+    /* Fondo animado + copiar email + tilt cards (exacto al original) */
+    (function(){
+      const canvas = document.getElementById('bg-net');
+      const ctx = canvas.getContext('2d',{alpha:true});
+      let DPR=Math.min(2,window.devicePixelRatio||1);let points=[],W=0,H=0;
+      function rs(){const w=innerWidth,h=innerHeight;
+        canvas.style.width=w+'px';canvas.style.height=h+'px';
+        canvas.width=Math.floor(w*DPR);canvas.height=Math.floor(h*DPR);
+        ctx.setTransform(DPR,0,0,DPR,0,0);W=w;H=h;init();}
+      addEventListener('resize',rs,{passive:true});rs();
+      function init(){points.length=0;const n=Math.max(48,Math.floor((W*H)/24000));
+        for(let i=0;i<n;i++){points.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()*1.2-0.6),vy:(Math.random()*1.2-0.6),r:Math.random()*1.8+0.6});}}
+      function hex2rgb(hex){hex=hex.replace('#','');if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');const n=parseInt(hex,16);return [(n>>16)&255,(n>>8)&255,n&255];}
+      function tick(){const [r,g,b]=hex2rgb(getComputedStyle(document.documentElement).getPropertyValue('--particle').trim()||'#4d8af0');
+        const maxD=Math.min(180,Math.max(110,Math.hypot(W,H)/14));ctx.clearRect(0,0,W,H);
+        for(const p of points){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},0.75)`;ctx.fill();}
+        for(let i=0;i<points.length;i++){for(let j=i+1;j<points.length;j++){const dx=points[i].x-points[j].x,dy=points[i].y-points[j].y;const d2=dx*dx+dy*dy;
+          if(d2<maxD*maxD){const a=1-Math.sqrt(d2)/maxD;ctx.strokeStyle=`rgba(${r},${g},${b},${0.20*a})`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(points[i].x,points[i].y);ctx.lineTo(points[j].x,points[j].y);ctx.stroke();}}}
+        requestAnimationFrame(tick);}tick();
+    })();
+    (function(){
+      const btn=document.getElementById('btn-email');const chip=document.getElementById('email-copy');const toast=document.getElementById('toast');
+      const EMAIL=chip?.dataset.email||'coderdeltalan.cargo784@8alias.com';
+      function showToast(){toast.classList.add('show');clearTimeout(showToast._t);showToast._t=setTimeout(()=>toast.classList.remove('show'),1600);}
+      async function copyIt(){try{await navigator.clipboard.writeText(EMAIL);showToast();}catch(e){const ta=document.createElement('textarea');ta.value=EMAIL;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();showToast();}}
+      btn?.addEventListener('click',copyIt);chip?.addEventListener('click',copyIt);
+    })();
+    (function(){
+      const cards=document.querySelectorAll('.card');cards.forEach(card=>{let rAF;
+        card.addEventListener('mousemove',(e)=>{cancelAnimationFrame(rAF);rAF=requestAnimationFrame(()=>{const r=card.getBoundingClientRect();
+          const x=(e.clientX-r.left)/r.width-0.5;const y=(e.clientY-r.top)/r.height-0.5;
+          card.style.transform=`translateY(-4px) rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*4).toFixed(2)}deg)`;});});
+        ['mouseleave','blur'].forEach(ev=>card.addEventListener(ev,()=>{card.style.transform='';}));});
+    })();
+  </script>
+</body>
+</html>
