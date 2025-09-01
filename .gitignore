@@ -1,4 +1,13 @@
+# Node/Astro
 node_modules/
 dist/
 .astro/
+.vite/
+*.log
+
+# SO/editor
 .DS_Store
+Thumbs.db
+
+# Demo local que no va al repo
+pro-demo/
