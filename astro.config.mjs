@@ -1,9 +1,7 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+import github from '@astrojs/github';
+
 export default defineConfig({
+  integrations: [github()],
   site: 'https://coderdeltalan.github.io/cdlan-portfolio/',
-  integrations: [tailwind({ applyBaseStyles: false }), mdx(), sitemap()],
-  build: { inlineStylesheets: 'auto' },
 });
