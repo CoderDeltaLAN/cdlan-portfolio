@@ -1,11 +1,12 @@
-name: Deploy
+name: Site CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["**"]
+  pull_request:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,8 +14,5 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+      - run: npx astro check
       - run: npm run build
-      - uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
