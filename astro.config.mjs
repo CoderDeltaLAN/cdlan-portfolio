@@ -1,14 +1,10 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+
+const IS_CI = process.env.GITHUB_ACTIONS === 'true';
 
 export default defineConfig({
-  site: 'https://coderdeltalan.github.io/cdlan-portfolio/',
-  integrations: [
-    tailwind({ applyBaseStyles: false }),
-    mdx(),
-    sitemap(),
-  ],
+  site: IS_CI ? 'https://coderdeltalan.github.io/cdlan-portfolio' : 'http://localhost:4321',
+  base: IS_CI ? '/cdlan-portfolio' : '/',
+  output: 'static',
   build: { inlineStylesheets: 'auto' },
 });
