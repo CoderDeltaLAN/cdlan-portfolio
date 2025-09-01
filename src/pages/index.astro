@@ -6,14 +6,14 @@
 
 <script>
   // Funciones auxiliares
-  function hex2rgb(hex) {
+  function hex2rgb(hex: string){
     hex = hex.replace('#','');
-    if (hex.length === 3) hex = hex.split('').map(c => c+c).join('');
+    if (hex.length === 3) hex = hex.split('').map((c: string)=> c+c).join('');
     const n = parseInt(hex,16);
     return [(n>>16)&255,(n>>8)&255,n&255];
   }
 
-  function toast(msg) {
+  function toast(msg: string){
     const div = document.createElement('div');
     div.textContent = msg;
     document.body.appendChild(div);
