@@ -1,0 +1,20 @@
+name: Lighthouse
+on:
+  push: { branches: [ main ] }
+  workflow_dispatch:
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci && npm run build
+      - name: Run Lighthouse on deployed page
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            https://coderdeltalan.github.io/cdlan-portfolio/
+          runs: 3
+          uploadArtifacts: true
+          temporaryPublicStorage: true
