@@ -14,6 +14,6 @@ jobs:
         with: { node-version: '20' }
       - run: npm ci && npm run build
       - name: Check links
-        uses: lycheeverse/lychee-action@v1
+        uses: lycheeverse/lychee-action@v2
         with:
           args: --no-progress --max-concurrency 8 dist/**/*.html
