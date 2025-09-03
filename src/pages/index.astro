@@ -1,12 +1,59 @@
 ---
-/* Minimal smoke page for GitHub Pages base path */
+const base = import.meta.env.BASE_URL;
 ---
-<p>
-  <img
-    src={`${import.meta.env.BASE_URL}assets/placeholder.svg`}
-    alt="placeholder"
-    width="200"
-    height="200"
-    style="display:block;margin:12px 0"
-  />
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CoderDeltaLAN — Portfolio</title>
+  <base href={base}>
+
+  <style>
+    :root{--bg:#0a0a1a;--text:#e7e9f0;--muted:#a8b0c2;--accent:#4d8af0}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;background:#0a0a1a;color:var(--text)}
+    .wrap{max-width:980px;margin:60px auto;padding:0 20px}
+    .title{font-size:clamp(32px,6vw,56px);font-weight:800;letter-spacing:.3px}
+    .subtitle{margin-top:8px;color:var(--muted)}
+    .cta{margin:18px 0 32px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 16px;border-radius:999px;border:1px solid #3f6fe0;background:#1a2140;color:#fff;text-decoration:none}
+    .panel{margin-top:22px;padding:18px;border:1px solid #2a335a;border-radius:14px;background:#11182e}
+    .cards{margin-top:14px;display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:640px){.cards{grid-template-columns:1fr}}
+    .card{padding:14px;border:1px solid #2a335a;border-radius:12px;background:#0f1530}
+    .badge{font-size:12px;border:1px solid #3f6fe0;border-radius:999px;padding:2px 8px;margin-left:8px;color:#bcd1ff}
+    .banner{display:block;margin:20px 0}
+    footer{margin:40px 0 10px;color:#9fb0d4;text-align:center;font-size:14px}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1 class="title">CoderDeltaLAN</h1>
+    <p class="subtitle">OSS Projects · Python · DevOps · AI Tools</p>
+
+    <div class="cta">
+      <a class="btn" href="https://github.com/CoderDeltaLAN" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener">Repos</a>
+    </div>
+
+    <img class="banner" src={base + 'assets/placeholder.svg'} alt="placeholder" width="200" height="200" />
+
+    <section class="panel">
+      <h2>Featured Projects</h2>
+      <div class="cards">
+        <a class="card" href="https://github.com/CoderDeltaLAN/pybuglint" target="_blank" rel="noopener">
+          <strong>pybuglint</strong><span class="badge">Python · Lint</span>
+          <p>Static analysis to catch bugs early. Ruff · Black · Pytest · CI/CD.</p>
+        </a>
+        <a class="card" href="https://github.com/CoderDeltaLAN/ai-patch-verifier" target="_blank" rel="noopener">
+          <strong>ai-patch-verifier</strong><span class="badge">Python · CLI</span>
+          <p>Verify AI-generated patches with linting, tests and security checks.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer>© 2025 CoderDeltaLAN · MIT</footer>
+  </main>
+</body>
+</html>
