@@ -1,48 +1,16 @@
 ---
-// frontmatter si aplica
+/* Minimal smoke page for GitHub Pages base path */
 ---
+<h1 style="margin:16px 0;font-size:2rem">CoderDeltaLAN Portfolio — Smoke OK</h1>
 
-<!-- tu HTML y componentes arriba -->
+<p>BASE_URL: {import.meta.env.BASE_URL}</p>
 
-<script>
-  // Funciones auxiliares
-  function hex2rgb(hex: string){
-    hex = hex.replace('#','');
-    if (hex.length === 3) hex = hex.split('').map((c: string)=> c+c).join('');
-    const n = parseInt(hex,16);
-    return [(n>>16)&255,(n>>8)&255,n&255];
-  }
-
-  function toast(msg: string){
-    const div = document.createElement('div');
-    div.textContent = msg;
-    document.body.appendChild(div);
-    setTimeout(() => div.remove(), 2000);
-  }   
-
-  // Canvas background con tipado
-  const canvas = document.querySelector('#bg-net');
-  if (canvas instanceof HTMLCanvasElement) {
-    const ctx = canvas.getContext('2d',{alpha:true});
-    const DPR = window.devicePixelRatio || 1;
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    canvas.width = Math.floor(w*DPR);
-    canvas.height = Math.floor(h*DPR);
-  }
-
-  // Hover cards con tipado
-  document.querySelectorAll('.card').forEach(el => {
-    if (!(el instanceof HTMLElement)) return;
-    el.addEventListener('mousemove', e => {
-      if (!(e instanceof MouseEvent)) return;
-      const rect = el.getBoundingClientRect();
-      const x = (e.clientX-rect.left)/rect.width-0.5;
-      const y = (e.clientY-rect.top)/rect.height-0.5;
-      el.style.transform = `translateY(-4px) rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*4).toFixed(2)}deg)`;
-    });
-    ['mouseleave','blur'].forEach(ev =>
-      el.addEventListener(ev, () => { el.style.transform = ''; })
-    );
-  });
-</script>
+<p>
+  <img
+    src={`${import.meta.env.BASE_URL}assets/placeholder.svg`}
+    alt="placeholder"
+    width="200"
+    height="200"
+    style="display:block;margin:12px 0"
+  />
+</p>
