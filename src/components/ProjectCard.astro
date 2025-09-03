@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL;
 // - '/algo' → base + 'algo'
 // - 'algo'  → base + 'algo'
 // - undefined → placeholder en public/assets/
-function withBase(p) {
+function withBase(p?: string): string {
   if (!p) return `${base}assets/placeholder.svg`;
   if (typeof p !== 'string') return `${base}assets/placeholder.svg`;
   if (p.startsWith('http')) return p;
