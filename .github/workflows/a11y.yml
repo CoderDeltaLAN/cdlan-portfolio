@@ -1,27 +1,41 @@
 name: Accessibility (pa11y)
 on:
-  push: { branches: [ main ] }
+  push:
+    branches: [ main ]
   pull_request:
+  workflow_dispatch:
 jobs:
   pa11y:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - run: npm ci && npm run build
-      - name: Serve dist
-        run: npx http-server dist -p 8080 & echo $! > server.pid
-      - name: pa11y audit
-        timeout-minutes: 5
-        run: npx pa11y http://127.0.0.1:8080/ --threshold 0 --wait 1500 --timeout 60000 --color --reporter html > pa11y-report.html
+      - name: Start server
+        run: |
+          npx http-server dist -p 8080 > server.log 2>&1 &
+          echo $! > server.pid
+      - name: Wait for server
+        run: npx wait-on -t 30000 http-get://127.0.0.1:8080/
+      - name: Audit with pa11y
+        run: |
+          npx pa11y http://127.0.0.1:8080/ \
+            --level error --threshold 0 --wait 1000 --timeout 60000 \
+            --reporter html > pa11y-report.html
       - name: Upload a11y report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pa11y-report
           path: pa11y-report.html
-        run: npx pa11y http://127.0.0.1:8080/ --threshold 0 --color
+      - name: Upload server log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: http-server-log
+          path: server.log
       - name: Stop server
         if: always()
         run: kill $(cat server.pid)

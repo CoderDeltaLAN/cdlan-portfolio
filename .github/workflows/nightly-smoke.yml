@@ -6,7 +6,8 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Quick page assertions
+        run: |
           URL="https://coderdeltalan.github.io/cdlan-portfolio"
           TS=$(date +%s)
           curl -fsS "$URL/?v=$TS" -o page.html
