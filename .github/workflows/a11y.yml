@@ -13,6 +13,14 @@ jobs:
       - name: Serve dist
         run: npx http-server dist -p 8080 & echo $! > server.pid
       - name: pa11y audit
+        timeout-minutes: 5
+        run: npx pa11y http://127.0.0.1:8080/ --threshold 0 --wait 1500 --timeout 60000 --color --reporter html > pa11y-report.html
+      - name: Upload a11y report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pa11y-report
+          path: pa11y-report.html
         run: npx pa11y http://127.0.0.1:8080/ --threshold 0 --color
       - name: Stop server
         if: always()
