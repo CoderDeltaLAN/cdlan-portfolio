@@ -1,0 +1,19 @@
+name: Accessibility (pa11y)
+on:
+  push: { branches: [ main ] }
+  pull_request:
+jobs:
+  pa11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci && npm run build
+      - name: Serve dist
+        run: npx http-server dist -p 8080 & echo $! > server.pid
+      - name: pa11y audit
+        run: npx pa11y http://127.0.0.1:8080/ --threshold 0 --color
+      - name: Stop server
+        if: always()
+        run: kill $(cat server.pid)
