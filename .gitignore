@@ -1,2 +1,6 @@
 pro-demo/
 pro-demo/
+node_modules/
+.astro/
+dist/
+.vite/
