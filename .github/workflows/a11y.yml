@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
 jobs:
   pa11y:
+    if: ${{ !(github.event_name == pull_request && github.actor == dependabot[bot]) }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     continue-on-error: true
