@@ -1,24 +1,26 @@
 ---
 const { email = "coderdeltalan.cargo784@8alias.com", label = "Contact" } = Astro.props;
 ---
-<button id="copy-email-btn"
+<button
   class="px-4 py-2 rounded-2xl shadow text-sm font-medium border border-white/10 bg-white/5 hover:bg-white/10 transition"
-  aria-label="Copy email to clipboard">
+  aria-label="Copy email to clipboard"
+  data-email={email}>
   {label}: <code class="ml-1">{email}</code>
 </button>
 
-<script>
+<script is:inline>
   const btn = document.currentScript.previousElementSibling;
   btn?.addEventListener('click', async () => {
+    const email = btn?.dataset?.email || '';
     try {
-      await navigator.clipboard.writeText(`{{email}}`);
+      await navigator.clipboard.writeText(email);
       toast('Email copied to clipboard');
     } catch {
       toast('Copy failed. Select and copy manually.');
     }
   });
 
-  function toast(message) {
+  function toast(message){
     let host = document.getElementById('toast-host');
     if (!host) {
       host = document.createElement('div');
