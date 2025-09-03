@@ -1,0 +1,15 @@
+name: Nightly Smoke
+on:
+  schedule: [{ cron: "0 6 * * *" }]
+  workflow_dispatch:
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          URL="https://coderdeltalan.github.io/cdlan-portfolio"
+          TS=$(date +%s)
+          curl -fsS "$URL/?v=$TS" -o page.html
+          grep -Fq "Featured Projects" page.html
+          grep -Fq "type=public"       page.html
+          grep -Fq "Yosvel — CoderDeltaLAN" page.html
