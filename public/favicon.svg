@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <defs>
-    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#7aa9ff"/><stop offset="1" stop-color="#4d8af0"/>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0f0c29"/><stop offset="1" stop-color="#302b63"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="12" fill="#0a0a1a"/>
-  <path fill="url(#g)" d="M32 10l4.9 10.4L48 22l-8 7.8 1.9 11.2L32 35l-9.9 6 1.9-11.2-8-7.8 11.1-1.6z"/>
+  <rect width="256" height="256" rx="48" fill="url(#g)"/>
+  <g fill="#cfe0ff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="800">
+    <text x="50%" y="55%" font-size="112" text-anchor="middle" dominant-baseline="middle">CDL</text>
+  </g>
 </svg>

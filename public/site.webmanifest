@@ -1,11 +1,11 @@
 {
   "name": "CoderDeltaLAN — Portfolio",
-  "short_name": "CDLAN",
+  "short_name": "CDL Portfolio",
   "start_url": "/cdlan-portfolio/",
   "scope": "/cdlan-portfolio/",
   "display": "standalone",
-  "background_color": "#0a0a1a",
-  "theme_color": "#0a0a1a",
+  "background_color": "#0f0c29",
+  "theme_color": "#0f0c29",
   "icons": [
     { "src": "/cdlan-portfolio/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
