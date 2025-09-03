@@ -22,13 +22,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: npm
       - run: npm ci
+      - run: npx astro check
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-
+          include-hidden-files: true        # <- clave: sube .nojekyll
+          if-no-files-found: error
   deploy:
     needs: build
     runs-on: ubuntu-latest
