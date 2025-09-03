@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /cdlan-portfolio/
+Sitemap: https://coderdeltalan.github.io/cdlan-portfolio/sitemap.xml

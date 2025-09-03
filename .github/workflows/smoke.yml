@@ -1,0 +1,20 @@
+name: Site Smoke
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npx astro check
+      - run: npm run build
+      - name: Greps
+        run: |
+          grep -Fq "Featured Projects" dist/index.html
+          grep -Fq "type=public"       dist/index.html
+          grep -Fq "Yosvel — CoderDeltaLAN" dist/index.html
