@@ -114,6 +114,104 @@ else
   stop=1
 fi
 
+printf '\n== structural integrity check ==\n'
+python - <<'STRUCTPY' || stop=1
+from html.parser import HTMLParser
+from pathlib import Path
+import json
+import re
+
+html = Path("index.html").read_text(encoding="utf-8")
+errors = []
+
+class Parser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.ids = []
+        self.hrefs = []
+        self.title_count = 0
+        self.h1_count = 0
+        self.jsonld_blocks = []
+        self.in_jsonld = False
+        self.jsonld_buffer = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs_dict = dict(attrs)
+
+        if "id" in attrs_dict:
+            self.ids.append(attrs_dict["id"])
+
+        if tag == "a" and "href" in attrs_dict:
+            self.hrefs.append(attrs_dict["href"])
+
+        if tag == "title":
+            self.title_count += 1
+
+        if tag == "h1":
+            self.h1_count += 1
+
+        if tag == "script" and attrs_dict.get("type") == "application/ld+json":
+            self.in_jsonld = True
+            self.jsonld_buffer = []
+
+    def handle_data(self, data):
+        if self.in_jsonld:
+            self.jsonld_buffer.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "script" and self.in_jsonld:
+            self.jsonld_blocks.append("".join(self.jsonld_buffer))
+            self.in_jsonld = False
+            self.jsonld_buffer = []
+
+parser = Parser()
+parser.feed(html)
+
+if parser.title_count != 1:
+    errors.append(f"title count must be 1, found {parser.title_count}")
+
+if parser.h1_count != 1:
+    errors.append(f"h1 count must be 1, found {parser.h1_count}")
+
+duplicate_ids = sorted({item for item in parser.ids if parser.ids.count(item) > 1})
+if duplicate_ids:
+    errors.append("duplicate ids: " + ", ".join(duplicate_ids))
+
+ids = set(parser.ids)
+broken_anchors = sorted({
+    href for href in parser.hrefs
+    if href.startswith("#") and href != "#" and href[1:] not in ids
+})
+if broken_anchors:
+    errors.append("broken internal anchors: " + ", ".join(broken_anchors))
+
+if not parser.jsonld_blocks:
+    errors.append("missing JSON-LD block")
+
+for number, block in enumerate(parser.jsonld_blocks, 1):
+    try:
+        json.loads(block)
+    except Exception as exc:
+        errors.append(f"invalid JSON-LD block {number}: {exc}")
+
+blocked = re.findall(
+    r"senior|MÁXIMO NIVEL|24/7|latencia|<200|Claude Opus|Gemini 3\.5|GPT-5\.5|Qwen3|RTX 4070|OWASP|GDPR|HIPAA|SOC2|SOC 2|\+40|Rúbrica|cero alucinaciones|quick wins|ROI estimado|50% upfront|Retainer|producción cliente|Control total|sin dependencia de cloud|Observabilidad completa",
+    html,
+    re.IGNORECASE,
+)
+
+if blocked:
+    errors.append("blocked claims found: " + ", ".join(sorted(set(blocked))))
+
+if errors:
+    print("[FAIL] structural integrity failed")
+    for error in errors:
+        print(error)
+    raise SystemExit(1)
+
+print("[OK] structural integrity passed")
+STRUCTPY
+
 printf '\n== workflow trigger check ==\n'
 if grep -q 'chore/\*\*' .github/workflows/verify.yml && grep -q 'feat/\*\*' .github/workflows/verify.yml && grep -q 'fix/\*\*' .github/workflows/verify.yml && grep -q 'pull_request:' .github/workflows/verify.yml; then
   printf '[OK] workflow branch triggers found\n'
