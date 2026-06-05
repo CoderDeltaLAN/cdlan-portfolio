@@ -1,29 +1,1621 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CDLAN Portfolio — Building Responsibly</title>
-  <meta name="description" content="CDLAN Portfolio — applied AI, automation, RAG, agents, internal systems and static websites without backend for businesses and establishments.">
-  <meta name="author" content="Yosvel Delta / CDLAN">
-  <link rel="stylesheet" href="assets/css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══════════════════════════════════════
+     SEGURIDAD FRONTEND — POLÍTICAS BÁSICAS
+═══════════════════════════════════════ -->
+<!-- Content Security Policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+<!-- Políticas frontend básicas. La seguridad real depende también de cabeceras HTTP del hosting. -->
+<meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+<meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
+<title>Yosvel Delta · CDLAN — IA Aplicada, Automatización, RAG y Webs Profesionales</title>
+<meta name="description" content="CDLAN / Yosvel Delta — IA aplicada, automatización, RAG, agentes IA y páginas web profesionales sin backend para negocios, profesionales y establecimientos. Tenerife Sur, Canarias. Sin humo. Sistemas útiles, documentados y mantenibles.">
+<meta property="og:site_name" content="CDLAN · CoderDeltaLAN">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+
+<!-- TWITTER / X CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yosvel Delta · CDLAN — IA Aplicada y Automatización">
+<meta name="twitter:description" content="IA aplicada, automatización, RAG, agentes IA y webs profesionales sin backend. Sistemas sobrios, útiles y mantenibles para negocios y profesionales.">
+<meta name="twitter:image:alt" content="CDLAN · Yosvel Delta · Consultor IA Tenerife">
+
+<!-- SCHEMA.ORG JSON-LD — DATOS ESTRUCTURADOS BÁSICOS -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://coderdeltalan.github.io/cdlan-portfolio/#website",
+      "url": "https://coderdeltalan.github.io/cdlan-portfolio/",
+      "name": "CDLAN · CoderDeltaLAN",
+      "description": "IA aplicada, automatización, RAG, agentes IA y webs profesionales sin backend.",
+      "inLanguage": "es"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://coderdeltalan.github.io/cdlan-portfolio/#person",
+      "name": "Yosvel Delta",
+      "alternateName": ["Delta", "CDLAN", "CoderDeltaLAN"],
+      "jobTitle": "Consultor IA independiente",
+      "description": "Consultor independiente en IA aplicada, automatización, RAG, agentes IA, documentación operativa y desarrollo web profesional sin backend.",
+      "url": "https://coderdeltalan.github.io/cdlan-portfolio/",
+      "sameAs": ["https://github.com/CoderDeltaLAN"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://coderdeltalan.github.io/cdlan-portfolio/#service",
+      "name": "CDLAN / CoderDeltaLAN",
+      "description": "Servicios de IA aplicada, automatización, RAG, agentes IA, documentación operativa y webs profesionales sin backend.",
+      "url": "https://coderdeltalan.github.io/cdlan-portfolio/",
+      "areaServed": ["España", "Canarias", "Unión Europea"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios CDLAN",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Diagnóstico inicial de procesos", "description": "Revisión del proceso, tareas repetitivas y oportunidades de mejora. Presupuesto según caso." },
+          { "@type": "Offer", "name": "Sistemas RAG y agentes IA", "description": "Diseño e implementación por fases. Presupuesto según alcance." },
+          { "@type": "Offer", "name": "Automatización N8N", "description": "Workflows para procesos repetitivos. Presupuesto según alcance." },
+          { "@type": "Offer", "name": "Webs profesionales sin backend", "description": "Páginas web estáticas para negocios. Presupuesto según caso." },
+          { "@type": "Offer", "name": "Mantenimiento y mejora continua", "description": "Corrección, documentación y nuevas fases. Mantenimiento opcional." }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué hace CDLAN?",
+          "acceptedAnswer": { "@type": "Answer", "text": "CDLAN ayuda a negocios y profesionales a ordenar procesos, automatizar tareas repetitivas, construir sistemas RAG y agentes cuando aportan valor real y crear webs profesionales sin backend cuando basta una presencia digital clara y mantenible." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es un sistema RAG?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Un sistema RAG permite consultar documentos y conocimiento interno mediante lenguaje natural, reduciendo búsqueda manual y mejorando el acceso a información relevante. Su precisión depende de la calidad de los datos, la arquitectura y las validaciones." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿CDLAN también hace páginas web?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sí. CDLAN desarrolla páginas web estáticas sin backend para negocios, profesionales y establecimientos que necesitan presencia digital clara, rápida, mantenible y profesional." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta un proyecto?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Depende del alcance, la complejidad, los datos disponibles y las integraciones necesarias. Se revisa caso por caso antes de proponer una fase de trabajo." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El laboratorio local de IA ya está en producción?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. El laboratorio local/híbrido se usa para pruebas, arquitectura, automatización y validación técnica. Cualquier uso en cliente requiere benchmarks, seguridad y validación previa." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://coderdeltalan.github.io/cdlan-portfolio/" },
+        { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://coderdeltalan.github.io/cdlan-portfolio/#servicios" },
+        { "@type": "ListItem", "position": 3, "name": "Proyectos", "item": "https://coderdeltalan.github.io/cdlan-portfolio/#proyectos" },
+        { "@type": "ListItem", "position": 4, "name": "Contacto",  "item": "https://coderdeltalan.github.io/cdlan-portfolio/#contacto" }
+      ]
+    }
+  ]
+}
+</script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --black:#000;--b2:#050505;--b3:#0a0a0a;
+  --gold:#D4AF37;--gold-l:#F5D77A;--gold-d:#9A7B1E;--gold-dim:rgba(212,175,55,0.15);
+  --burg:#8B0000;--burg2:#B11226;--burg-d:#2A0000;
+  --pearl:#F8F5EF;--silver:#C7C7C7;--silver-d:#6F6F6F;
+  --copper:#B87333;--ice:#7DDCFF;--ice2:rgba(125,220,255,0.08);
+  --neural:#00E5FF;
+  --fd:'Fraunces',Georgia,serif;--fb:'DM Sans',sans-serif;--fm:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--pearl);font-family:var(--fb);font-weight:300;line-height:1.7;overflow-x:hidden;cursor:none}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--burg));border-radius:2px}
+
+/* CURSOR */
+#cur{position:fixed;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+#cur-r{position:fixed;width:28px;height:28px;border:1px solid rgba(212,175,55,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s}
+#cur-glow{position:fixed;width:120px;height:120px;background:radial-gradient(circle,rgba(212,175,55,.06) 0%,transparent 70%);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:opacity .5s}
+
+/* MATRIX CANVAS */
+#neural-canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.18}
+
+/* PROGRESS BAR */
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--burg),var(--gold),var(--ice));z-index:10001;width:0%;transition:width .1s}
+
+/* LANG SWITCHER */
+#lang-switcher{position:fixed;top:50%;right:.5rem;transform:translateY(-50%);z-index:1001;display:flex;flex-direction:column;gap:.3rem}
+.lang-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(212,175,55,.2);background:rgba(0,0,0,.7);color:var(--silver-d);font-family:var(--fm);font-size:.55rem;letter-spacing:.05em;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.lang-btn:hover,.lang-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(212,175,55,.08);box-shadow:0 0 12px rgba(212,175,55,.2)}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 3rem;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(212,175,55,.1)}
+.nav-logo{font-family:var(--fd);font-weight:700;font-size:1rem;letter-spacing:.1em;color:var(--pearl);text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.nav-logo .g{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none}
+.nav-links a{color:var(--silver-d);text-decoration:none;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:400;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:transparent!important;border:1px solid var(--gold)!important;color:var(--gold)!important;padding:.4rem 1rem;border-radius:2px;font-size:.7rem!important;cursor:pointer;transition:all .3s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--black)!important}
+.nav-cta::after{display:none!important}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{display:block;width:22px;height:1px;background:var(--pearl);transition:all .3s}
+
+/* MOBILE NAV */
+.mob-nav{display:none;position:fixed;inset:0;background:var(--black);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-nav.open{display:flex}
+.mob-nav a{color:var(--pearl);text-decoration:none;font-family:var(--fd);font-size:2rem;font-weight:700;transition:color .3s}
+.mob-nav a:hover{color:var(--gold)}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:6rem 3rem 4rem;overflow:hidden}
+.hero-bg-layer{position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% -10%,rgba(139,0,0,.1) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 90% 90%,rgba(212,175,55,.06) 0%,transparent 50%),radial-gradient(ellipse 40% 40% at 10% 70%,rgba(0,229,255,.03) 0%,transparent 50%);pointer-events:none}
+.hero-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1200px;margin-left:auto;margin-right:auto;text-align:center;display:flex;flex-direction:column;align-items:center}
+
+.badge{display:inline-flex;align-items:center;gap:.6rem;border:1px solid rgba(212,175,55,.25);padding:.3rem 1rem;border-radius:100px;font-family:var(--fm);font-size:.65rem;color:var(--gold-d);letter-spacing:.1em;margin-bottom:2rem;background:rgba(212,175,55,.04);backdrop-filter:blur(10px);margin-left:auto;margin-right:auto}
+.badge-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(212,175,55,.4)}50%{opacity:.4;box-shadow:0 0 0 6px rgba(212,175,55,0)}}
+
+.hero-name{font-family:var(--fd);font-weight:800;font-size:clamp(3.5rem,9vw,8rem);line-height:.92;letter-spacing:-.03em;margin-bottom:1.75rem;text-align:center}
+.hero-name .ln{display:block;overflow:hidden}
+.hero-name .w{display:inline-block}
+.hero-name .gold{color:var(--gold)}
+.hero-name .dim{color:rgba(248,245,239,.25);font-weight:400;font-size:.55em;letter-spacing:.02em;text-align:center;display:block}
+
+.hero-claim{font-size:clamp(1rem,2vw,1.3rem);color:var(--silver);max-width:900px;margin-bottom:.75rem;font-weight:300;text-align:center}
+.hero-sub{font-size:.85rem;color:var(--silver-d);max-width:860px;margin-bottom:3rem;font-family:var(--fm);line-height:1.8;text-align:center}
+
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;justify-content:center}
+.btn-p{background:var(--gold);color:var(--black);border:none;padding:.9rem 2.2rem;font-family:var(--fd);font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s;border-radius:2px;position:relative;overflow:hidden}
+.btn-p::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%) skewX(-20deg);transition:transform .4s}
+.btn-p:hover::before{transform:translateX(100%) skewX(-20deg)}
+.btn-p:hover{box-shadow:0 0 40px rgba(212,175,55,.4),0 0 80px rgba(139,0,0,.2);transform:translateY(-2px)}
+.btn-s{background:transparent;color:var(--pearl);border:1px solid rgba(248,245,239,.2);padding:.9rem 2.2rem;font-family:var(--fd);font-weight:600;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s;border-radius:2px}
+.btn-s:hover{border-color:var(--gold);color:var(--gold);box-shadow:inset 0 0 30px rgba(139,0,0,.1)}
+
+/* TERMINAL */
+.h-terminal{background:rgba(3,3,3,.95);border:1px solid rgba(212,175,55,.12);border-radius:8px;padding:1.5rem;max-width:780px;position:relative;box-shadow:0 0 60px rgba(139,0,0,.06),0 0 120px rgba(212,175,55,.03),inset 0 1px 0 rgba(212,175,55,.08);margin-left:auto;margin-right:auto}
+.h-terminal::before{content:'';position:absolute;top:-1px;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.5),transparent)}
+.t-dots{display:flex;gap:6px;margin-bottom:1.25rem}
+.t-dots span{width:10px;height:10px;border-radius:50%}
+.t-dots span:nth-child(1){background:#ff5f57}
+.t-dots span:nth-child(2){background:#febc2e}
+.t-dots span:nth-child(3){background:#28c840}
+.t-line{font-family:var(--fm);font-size:.7rem;line-height:1.9;color:var(--silver-d)}
+.t-line .cmd{color:var(--gold)}
+.t-line .ok{color:#28c840}
+.t-line .ice{color:var(--ice)}
+.t-line .red{color:var(--burg2)}
+.t-cur{display:inline-block;width:7px;height:.85em;background:var(--gold);vertical-align:middle;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-trust{font-family:var(--fm);font-size:.62rem;color:rgba(111,111,111,.5);margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(212,175,55,.08);letter-spacing:.06em;text-align:center;width:100%}
+
+/* SEP */
+.sep{position:relative;height:1px;overflow:visible}
+.sep::before{content:'';position:absolute;top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.35),rgba(139,0,0,.25),rgba(212,175,55,.35),transparent)}
+
+/* SECCIONES */
+section{position:relative;padding:8rem 3rem;z-index:1}
+.container{max-width:1200px;margin:0 auto}
+.s-label{font-family:var(--fm);font-size:.62rem;color:var(--gold-d);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;justify-content:center;gap:.75rem;text-align:center}
+.s-label::before{display:none}
+.s-title{font-family:var(--fd);font-weight:900;font-size:clamp(2rem,4.5vw,4rem);line-height:1;letter-spacing:-.01em;margin-bottom:1rem;text-align:center}
+.s-title .g{color:var(--gold)}
+.s-sub{color:var(--silver-d);max-width:700px;font-size:.95rem;line-height:1.75;margin-bottom:4rem;text-align:center;margin-left:auto;margin-right:auto}
+
+/* AI VISUAL SECTION */
+#ai-visual{background:var(--b2);overflow:hidden;padding:6rem 3rem}
+.ai-branches{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.08);border-radius:4px;overflow:hidden;margin-top:3rem}
+.ai-branch{padding:2rem 1.5rem;background:var(--b2);position:relative;overflow:hidden;transition:all .5s;cursor:default}
+.ai-branch::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.06) 0%,transparent 60%);opacity:0;transition:opacity .5s}
+.ai-branch:hover{background:rgba(212,175,55,.025)}
+.ai-branch:hover::before{opacity:1}
+.ai-branch-icon{font-size:2rem;margin-bottom:1rem;display:block;filter:drop-shadow(0 0 8px rgba(212,175,55,.3))}
+.ai-branch-name{font-family:var(--fd);font-weight:700;font-size:.95rem;color:var(--gold-l);margin-bottom:.5rem;letter-spacing:.04em}
+.ai-branch-desc{font-size:.78rem;color:var(--silver-d);line-height:1.6}
+.ai-branch-tech{margin-top:.75rem;font-family:var(--fm);font-size:.6rem;color:rgba(125,220,255,.5);letter-spacing:.08em}
+
+/* ORBIT VISUAL */
+.orbit-wrapper{position:relative;height:340px;display:flex;align-items:center;justify-content:center;margin:4rem auto;max-width:400px}
+.orbit-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.25),rgba(212,175,55,.04));border:1px solid rgba(212,175,55,.4);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-align:center;line-height:1.3;z-index:3;box-shadow:0 0 30px rgba(212,175,55,.12),0 0 60px rgba(139,0,0,.08)}
+.orbit-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(212,175,55,.08)}
+.orbit-ring:nth-child(1){width:160px;height:160px}
+.orbit-ring:nth-child(2){width:250px;height:250px;border-color:rgba(0,229,255,.05)}
+.orbit-ring:nth-child(3){width:340px;height:340px}
+/* Nodos en órbita —posicionados con top/left desde centro exacto */
+.orbit-node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:4px;z-index:4}
+.orbit-node-icon{width:32px;height:32px;border-radius:50%;border:1px solid rgba(212,175,55,.3);background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.orbit-label{font-family:var(--fm);font-size:.55rem;color:var(--silver-d);letter-spacing:.08em;white-space:nowrap}
+
+/* CARDS */
+.cards-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.card{background:rgba(255,255,255,.02);border:1px solid rgba(212,175,55,.1);border-radius:4px;padding:2rem;position:relative;overflow:hidden;transition:border-color .4s,transform .4s,box-shadow .4s}
+.card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent);transform:scaleX(0);transition:transform .5s}
+.card:hover{border-color:rgba(212,175,55,.3);transform:translateY(-5px);box-shadow:0 25px 70px rgba(139,0,0,.12),0 0 40px rgba(212,175,55,.04)}
+.card:hover::after{transform:scaleX(1)}
+.c-icon{width:48px;height:48px;border:1px solid rgba(212,175,55,.2);border-radius:3px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.3rem;position:relative}
+.c-icon::after{content:'';position:absolute;inset:-1px;border-radius:3px;background:linear-gradient(135deg,rgba(212,175,55,.1),transparent);opacity:0;transition:opacity .3s}
+.card:hover .c-icon::after{opacity:1}
+.c-title{font-family:var(--fd);font-weight:700;font-size:1.05rem;margin-bottom:.75rem}
+.c-text{color:var(--silver-d);font-size:.875rem;line-height:1.7}
+
+/* FLOW — sistema CDLAN */
+#sistema{background:var(--b2)}
+.flow-wrap{display:flex;flex-direction:column;gap:0;margin-top:3rem;position:relative}
+.flow-wrap::before{content:'';position:absolute;left:3.5rem;top:2rem;bottom:2rem;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,175,55,.2) 8%,rgba(212,175,55,.2) 92%,transparent);pointer-events:none}
+.f-step{display:grid;grid-template-columns:7rem 1fr;gap:1.5rem;align-items:first baseline;padding:2rem 2rem 2rem 0;border-bottom:1px solid rgba(212,175,55,.06);position:relative;cursor:default;transition:background .35s,border-color .35s;border-left:3px solid transparent}
+.f-step:last-child{border-bottom:none}
+.f-step:hover{background:rgba(212,175,55,.025);border-left-color:var(--gold)}
+.f-step::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--gold),var(--burg));transform:scaleY(0);transform-origin:top;transition:transform .4s ease}
+.f-step:hover::after{transform:scaleY(1)}
+.f-step.lit{border-left-color:rgba(212,175,55,.4)}
+.f-step.lit::after{transform:scaleY(1)}
+.f-num-wrap{display:flex;align-items:flex-start;justify-content:flex-end;padding-top:.1rem;position:relative}
+.f-num{font-family:var(--fd);font-size:3.5rem;font-weight:900;color:rgba(212,175,55,.2);line-height:1.05;letter-spacing:-.04em;transition:color .35s,text-shadow .35s;user-select:none}
+.f-step:hover .f-num{color:rgba(212,175,55,.55);text-shadow:0 0 30px rgba(212,175,55,.15)}
+.f-step.lit .f-num{color:rgba(212,175,55,.4)}
+.f-content{padding-top:0}
+.f-name{font-family:var(--fd);font-weight:700;font-size:1.05rem;color:var(--pearl);margin-bottom:.5rem;transition:color .3s}
+.f-step:hover .f-name{color:var(--gold-l)}
+.f-desc{font-size:.82rem;color:var(--silver-d);line-height:1.65;transition:color .3s}
+.f-step:hover .f-desc{color:var(--silver)}
+.f-tag-line{margin-top:.6rem;font-family:var(--fm);font-size:.62rem;color:rgba(212,175,55,.3);letter-spacing:.08em;transition:color .3s}
+.f-step:hover .f-tag-line{color:rgba(212,175,55,.6)}
+
+/* PROJECTS */
+.proj-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem}
+.proj-card{background:rgba(255,255,255,.018);border:1px solid rgba(212,175,55,.1);border-radius:4px;overflow:hidden;transition:all .4s;display:flex;flex-direction:column}
+.proj-card:hover{border-color:rgba(212,175,55,.3);transform:translateY(-6px);box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 50px rgba(139,0,0,.08)}
+.p-head{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid rgba(212,175,55,.06);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.p-type{font-family:var(--fm);font-size:.6rem;color:var(--gold-d);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.p-name{font-family:var(--fd);font-weight:700;font-size:1rem}
+.p-status{font-family:var(--fm);font-size:.58rem;padding:.22rem .6rem;border-radius:2px;white-space:nowrap;flex-shrink:0}
+.s-lab{background:rgba(184,115,51,.12);color:var(--copper);border:1px solid rgba(184,115,51,.25)}
+.s-ok{background:rgba(40,200,64,.08);color:#28c840;border:1px solid rgba(40,200,64,.2)}
+.s-con{background:rgba(125,220,255,.06);color:var(--ice);border:1px solid rgba(125,220,255,.15)}
+.p-body{padding:1.25rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:.85rem}
+.p-row-label{font-family:var(--fm);font-size:.6rem;color:var(--gold-d);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem}
+.p-row-text{font-size:.82rem;color:var(--silver);line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.2rem}
+.chip{font-family:var(--fm);font-size:.6rem;padding:.18rem .5rem;background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.12);border-radius:2px;color:var(--silver-d)}
+.p-foot{padding:1rem 1.5rem;border-top:1px solid rgba(212,175,55,.06)}
+.btn-g{background:transparent;border:1px solid rgba(212,175,55,.2);color:var(--gold);padding:.45rem 1rem;font-family:var(--fm);font-size:.68rem;letter-spacing:.08em;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s;border-radius:2px}
+.btn-g:hover{background:rgba(212,175,55,.08);border-color:var(--gold)}
+
+/* STACK */
+#stack-sec{background:var(--black)}
+.stack-cats{display:flex;flex-direction:column;gap:1.75rem;margin-top:3rem}
+.s-cat{display:grid;grid-template-columns:160px 1fr;gap:2rem;align-items:start;padding-bottom:1.75rem;border-bottom:1px solid rgba(212,175,55,.06)}
+.s-cat:last-child{border-bottom:none}
+.s-cat-label{font-family:var(--fm);font-size:.65rem;color:var(--gold-d);letter-spacing:.15em;text-transform:uppercase;padding-top:.2rem}
+.s-chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.sc{font-family:var(--fm);font-size:.7rem;padding:.32rem .8rem;background:rgba(255,255,255,.025);border:1px solid rgba(212,175,55,.1);border-radius:2px;color:var(--silver);transition:all .3s;letter-spacing:.03em;cursor:default}
+.sc:hover{border-color:rgba(212,175,55,.35);color:var(--pearl);background:rgba(212,175,55,.06)}
+.sc.hi{border-color:rgba(212,175,55,.3);color:var(--gold-l);background:rgba(212,175,55,.07)}
+
+/* SERVICIOS */
+#servicios{background:var(--b2)}
+.srv-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem}
+.srv-card{border:1px solid rgba(212,175,55,.1);border-radius:4px;padding:2rem;background:rgba(0,0,0,.35);display:flex;flex-direction:column;gap:1.25rem;transition:all .4s;position:relative;overflow:hidden}
+.srv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--burg),transparent);opacity:0;transition:opacity .4s}
+.srv-card:hover::before{opacity:1}
+.srv-card:hover{border-color:rgba(212,175,55,.25);transform:translateY(-3px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.srv-num{font-family:var(--fm);font-size:.62rem;color:var(--gold-d);letter-spacing:.15em}
+.srv-title{font-family:var(--fd);font-weight:700;font-size:1.15rem}
+.srv-desc{color:var(--silver-d);font-size:.88rem;line-height:1.7;flex:1}
+.srv-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.srv-list li{font-size:.8rem;color:var(--silver-d);display:flex;align-items:flex-start;gap:.6rem;line-height:1.4}
+.srv-list li::before{content:'›';color:var(--gold);font-size:1rem;line-height:1;flex-shrink:0;margin-top:1px}
+.srv-price{font-family:var(--fm);font-size:.68rem;color:var(--silver-d);padding-top:1rem;border-top:1px solid rgba(212,175,55,.07)}
+
+/* METODO */
+#metodo{background:var(--black)}
+.met-line{display:flex;flex-wrap:wrap}
+.met-step{flex:1;min-width:120px;padding:2rem 1.25rem 1.5rem;border:1px solid rgba(212,175,55,.07);border-right:none;transition:all .4s}
+.met-step:last-child{border-right:1px solid rgba(212,175,55,.07)}
+.met-step:hover{background:rgba(212,175,55,.025);border-color:rgba(212,175,55,.2)}
+.met-num{font-family:var(--fm);font-size:1.8rem;font-weight:300;color:rgba(212,175,55,.45);line-height:1;margin-bottom:.75rem}
+.met-name{font-family:var(--fd);font-weight:700;font-size:.85rem;color:var(--gold);margin-bottom:.4rem;letter-spacing:.05em}
+.met-desc{font-size:.75rem;color:var(--silver-d);line-height:1.5}
+
+/* CITA */
+.cita{border-left:2px solid var(--gold);padding:1.5rem 2rem;margin:4rem 0;background:rgba(212,175,55,.025);border-radius:0 4px 4px 0}
+.cita-t{font-family:var(--fd);font-size:clamp(1rem,2vw,1.4rem);font-weight:600;color:var(--pearl);line-height:1.5;font-style:italic}
+.cita-a{margin-top:.75rem;font-family:var(--fm);font-size:.67rem;color:var(--gold-d);letter-spacing:.1em}
+
+/* VERTICALES */
+#verticales{background:var(--b2)}
+.vert-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:3rem}
+.vert-card{padding:1.5rem 1.25rem;border:1px solid rgba(212,175,55,.08);border-radius:3px;background:rgba(0,0,0,.25);transition:all .4s;cursor:default}
+.vert-card:hover{border-color:rgba(212,175,55,.3);transform:translateY(-3px);background:rgba(212,175,55,.025)}
+.vert-icon{font-size:1.4rem;margin-bottom:.75rem;display:block}
+.vert-name{font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--pearl);margin-bottom:.4rem}
+.vert-desc{font-size:.77rem;color:var(--silver-d);line-height:1.5}
+
+/* CONTACTO */
+#contacto{background:var(--black);text-align:center;overflow:hidden}
+#contacto::before{content:'';position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(139,0,0,.05) 0%,transparent 65%);pointer-events:none}
+.cont-inner{position:relative;z-index:2}
+.cont-title{font-family:var(--fd);font-weight:900;font-size:clamp(2.5rem,7vw,5rem);line-height:.98;letter-spacing:-.015em;margin-bottom:1.5rem}
+.cont-sub{color:var(--silver-d);font-size:1rem;max-width:480px;margin:0 auto 3rem}
+.cont-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-bottom:3rem}
+.cont-link{display:flex;align-items:center;gap:.6rem;padding:.7rem 1.4rem;border:1px solid rgba(212,175,55,.18);border-radius:2px;color:var(--silver);text-decoration:none;font-family:var(--fm);font-size:.72rem;letter-spacing:.07em;transition:all .3s;background:rgba(255,255,255,.015)}
+.cont-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,175,55,.04)}
+.cont-nota{font-family:var(--fm);font-size:.62rem;color:rgba(111,111,111,.5);max-width:460px;margin:2rem auto 0;line-height:1.8}
+
+/* CONTACTO FORM */
+.cont-form-wrap{max-width:560px;margin:0 auto 2rem;text-align:left}
+.cont-form-toggle{display:flex;align-items:center;justify-content:center;gap:.75rem;padding:.9rem 2rem;border:1px solid rgba(212,175,55,.25);border-radius:3px;background:rgba(212,175,55,.04);color:var(--gold);font-family:var(--fm);font-size:.78rem;letter-spacing:.1em;cursor:pointer;transition:all .3s;width:100%;margin-bottom:0}
+.cont-form-toggle:hover{background:rgba(212,175,55,.08);border-color:var(--gold)}
+.cont-form-toggle svg{transition:transform .3s}
+.cont-form-toggle.open svg{transform:rotate(180deg)}
+.cont-form-panel{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),opacity .4s;opacity:0}
+.cont-form-panel.open{max-height:600px;opacity:1}
+.cont-form{display:flex;flex-direction:column;gap:.85rem;padding:1.5rem;border:1px solid rgba(212,175,55,.1);border-top:none;background:rgba(5,5,5,.9);border-radius:0 0 3px 3px}
+.cont-form label{font-family:var(--fm);font-size:.65rem;color:var(--gold-d);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.25rem;display:block}
+.cont-form input,.cont-form textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(212,175,55,.12);border-radius:2px;padding:.7rem .9rem;color:var(--pearl);font-family:var(--fb);font-size:.88rem;font-weight:300;outline:none;transition:border-color .3s;resize:vertical}
+.cont-form input:focus,.cont-form textarea:focus{border-color:rgba(212,175,55,.4)}
+.cont-form input::placeholder,.cont-form textarea::placeholder{color:rgba(111,111,111,.5);font-size:.82rem}
+.cont-form textarea{min-height:120px}
+.cont-form-send{background:var(--gold);color:var(--black);border:none;padding:.8rem 2rem;font-family:var(--fd);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .3s;width:100%}
+.cont-form-send:hover{background:var(--gold-l);box-shadow:0 0 30px rgba(212,175,55,.3)}
+footer{background:var(--b2);border-top:1px solid rgba(212,175,55,.07);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-brand{font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--pearl)}
+.f-brand span{color:var(--gold)}
+.f-copy{font-family:var(--fm);font-size:.62rem;color:var(--silver-d);letter-spacing:.07em}
+.f-tag{font-family:var(--fm);font-size:.62rem;color:var(--gold-d);letter-spacing:.1em}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(32px)}
+.rv-l{opacity:0;transform:translateX(-30px)}
+.rv-r{opacity:0;transform:translateX(30px)}
+.rv-s{opacity:0;transform:scale(.95)}
+
+/* SCAN LINE */
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);pointer-events:none;z-index:9990}
+
+/* GLITCH */
+.glitch{position:relative}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}
+.glitch::before{color:var(--ice);clip-path:polygon(0 20%,100% 20%,100% 40%,0 40%);animation:g1 4s infinite;opacity:.5}
+.glitch::after{color:var(--burg2);clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);animation:g2 4s infinite;opacity:.5}
+@keyframes g1{0%,90%,100%{transform:translateX(0)}91%{transform:translateX(-3px)}93%{transform:translateX(3px)}95%{transform:translateX(-2px)}}
+@keyframes g2{0%,88%,100%{transform:translateX(0)}89%{transform:translateX(3px)}91%{transform:translateX(-3px)}93%{transform:translateX(2px)}}
+
+/* FISCAL BOX */
+.fiscal-box{margin-top:2rem;padding:1.5rem;border:1px solid rgba(212,175,55,.1);border-radius:4px;background:rgba(212,175,55,.015)}
+.fiscal-box p:first-child{font-family:var(--fm);font-size:.67rem;color:var(--gold-d);letter-spacing:.12em;margin-bottom:.5rem}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.s-cat{grid-template-columns:130px 1fr;gap:1rem}}
+@media(max-width:768px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  #lang-switcher{right:.75rem}
+  #hero{padding:5rem 1.5rem 3rem}
+  section{padding:5rem 1.5rem}
+  footer{padding:1.5rem;flex-direction:column;align-items:flex-start}
+  .hero-ctas{flex-direction:column}
+  .btn-p,.btn-s{text-align:center}
+  .flow-wrap{flex-direction:column}
+  .f-step{grid-template-columns:4rem 1fr;gap:1rem;padding:1.5rem 1rem 1.5rem 0}
+  .f-num{font-size:2.5rem}
+  .met-line{flex-direction:column}
+  .met-step{border-right:1px solid rgba(212,175,55,.07);border-bottom:none}
+  .met-step:last-child{border-bottom:1px solid rgba(212,175,55,.07)}
+  .s-cat{grid-template-columns:1fr;gap:.6rem}
+  .cont-links{flex-direction:column;align-items:center}
+  .h-terminal{max-width:100%}
+  #cur,#cur-r,#cur-glow{display:none}
+  body{cursor:auto}
+  .orbit-wrapper{height:220px}
+}
+@media(max-width:480px){
+  .hero-name{font-size:clamp(2.8rem,13vw,4.5rem)}
+  .s-title{font-size:clamp(1.8rem,8vw,2.5rem)}
+  .cards-g{grid-template-columns:1fr}
+  .proj-g{grid-template-columns:1fr}
+  .srv-g{grid-template-columns:1fr}
+  .vert-g{grid-template-columns:1fr 1fr}
+  .ai-branches{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  #cur,#cur-r,#cur-glow{display:none}
+  body{cursor:auto}
+  .orbit-ring{animation:none}
+}
+</style>
 </head>
 <body>
-  <main class="shell">
-    <section class="hero" aria-labelledby="title">
-      <p class="eyebrow">CDLAN / CoderDeltaLAN</p>
-      <h1 id="title">CDLAN Portfolio</h1>
-      <p class="lead">
-        Applied AI, automation, RAG, agents, internal systems and professional static websites without backend for businesses, professionals and establishments.
-      </p>
-      <p class="status">
-        Clean bootstrap. Final landing page pending review.
-      </p>
-      <p class="boundary">
-        Public frontend. Private engine. No secrets, no fake claims, no backend data collection.
-      </p>
-    </section>
-  </main>
-  <script src="assets/js/main.js"></script>
+
+<!-- PROGRESS -->
+<div id="progress"></div>
+
+<!-- NEURAL CANVAS -->
+<canvas id="neural-canvas"></canvas>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur-r"></div>
+<div id="cur-glow"></div>
+
+<!-- LANG SWITCHER -->
+<div id="lang-switcher">
+  <button class="lang-btn active" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('de')">DE</button>
+  <button class="lang-btn" onclick="setLang('fr')">FR</button>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <a href="#construyo" onclick="closeMob()"><span data-t="nav_services">Servicios</span></a>
+  <a href="#proyectos" onclick="closeMob()"><span data-t="nav_projects">Proyectos</span></a>
+  <a href="#stack-sec" onclick="closeMob()">Stack</a>
+  <a href="#metodo" onclick="closeMob()"><span data-t="nav_method">Método</span></a>
+  <a href="#verticales" onclick="closeMob()"><span data-t="nav_sectors">Sectores</span></a>
+  <a href="#contacto" onclick="closeMob()"><span data-t="nav_contact">Contacto</span></a>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#hero" class="nav-logo" aria-label="Volver al inicio">CDLAN <span class="g">·</span> Yosvel Delta</a>
+  <ul class="nav-links">
+    <li><a href="#construyo" data-t="nav_services">Servicios</a></li>
+    <li><a href="#proyectos" data-t="nav_projects">Proyectos</a></li>
+    <li><a href="#stack-sec">Stack</a></li>
+    <li><a href="#metodo" data-t="nav_method">Método</a></li>
+    <li><a href="#verticales" data-t="nav_sectors">Sectores</a></li>
+    <li><a href="#contacto" class="nav-cta" data-t="nav_cta" onclick="setTimeout(()=>{openContactForm()},400)">Diagnóstico inicial</a></li>
+  </ul>
+  <div class="nav-burger" id="burger" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-layer"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-content">
+    <div class="badge" id="hBadge"><span class="badge-dot"></span><span data-t="badge">IA Aplicada · Automatización · RAG · Agentes · Webs sin backend · Tenerife Sur</span></div>
+    <h1 class="hero-name">
+      <span class="ln"><span class="w">Yosvel</span> <span class="w gold glitch" data-text="Delta">Delta</span></span>
+      <span class="ln dim"><span class="w">CDLAN</span></span>
+    </h1>
+    <p class="hero-claim" data-t="hero_claim">IA aplicada, automatización y páginas web profesionales para convertir procesos dispersos en sistemas claros, útiles y mantenibles.</p>
+    <p class="hero-sub" data-t="hero_sub">Diseño soluciones con RAG, agentes IA, automatización N8N, documentación operativa y desarrollo web estático sin backend cuando el negocio no necesita complejidad innecesaria.</p>
+    <p class="hero-antihumo">Sin humo. Sin IA mágica. Sin promesas vacías.<br>Sistemas simples cuando basta, sistemas avanzados cuando aportan valor real.</p>
+    <div class="hero-ctas">
+      <a href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn-p" data-t="cta_projects">Ver proyectos</a>
+      <a href="#contacto" class="btn-s" data-t="cta_diag" onclick="setTimeout(()=>{openContactForm()},400)">Solicitar diagnóstico inicial</a>
+    </div>
+    <div class="h-terminal">
+      <div class="t-dots"><span></span><span></span><span></span></div>
+      <div id="termOut"></div>
+    </div>
+    <p class="hero-trust" data-t="hero_trust">Portfolio público · Motor privado · Sin métricas inventadas · Sin clientes falsos · Adeje, Tenerife Sur</p>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- IA VISUAL — RAMAS -->
+<section id="ai-visual">
+  <div class="container">
+    <div class="s-label rv" data-t="ai_label">00 — Inteligencia Artificial</div>
+    <h2 class="s-title rv"><span class="g" data-t="ai_title">El ecosistema IA</span> <span data-t="ai_title2">que integro</span></h2>
+    <p class="s-sub rv" data-t="ai_sub">Cada herramienta tiene su lugar. La decisión no parte de la moda, sino del problema, los datos, el riesgo y el resultado esperado.</p>
+
+    <!-- ORBIT VISUAL — nodos posicionados desde centro exacto -->
+    <div class="orbit-wrapper rv-s">
+      <div class="orbit-ring"></div>
+      <div class="orbit-ring" id="ring2"></div>
+      <div class="orbit-ring" id="ring3"></div>
+      <div class="orbit-core">CDLAN<br>IA</div>
+      <!-- top:50% left:50% + offset desde centro. Nodo arriba (270°) -->
+      <div class="orbit-node" style="top:calc(50% - 125px - 20px);left:calc(50% - 16px)">
+        <div class="orbit-node-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7DDCFF" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="orbit-label">Automat.</span>
+      </div>
+      <!-- Nodo derecha (0°) -->
+      <div class="orbit-node" style="top:calc(50% - 20px);left:calc(50% + 125px - 16px)">
+        <div class="orbit-node-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7DDCFF" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <span class="orbit-label">RAG</span>
+      </div>
+      <!-- Nodo abajo (90°) -->
+      <div class="orbit-node" style="top:calc(50% + 125px - 20px);left:calc(50% - 16px)">
+        <div class="orbit-node-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        </div>
+        <span class="orbit-label">Voice</span>
+      </div>
+      <!-- Nodo izquierda (180°) -->
+      <div class="orbit-node" style="top:calc(50% - 20px);left:calc(50% - 125px - 16px)">
+        <div class="orbit-node-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <span class="orbit-label">Agentes</span>
+      </div>
+    </div>
+
+    <div class="ai-branches rv">
+      <div class="ai-branch">
+        <span class="ai-branch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></span>
+        <div class="ai-branch-name">RAG & Retrieval</div>
+        <div class="ai-branch-desc">Sistemas de recuperación semántica para consultar documentos, manuales y conocimiento interno con respuestas más trazables y revisables.</div>
+        <div class="ai-branch-tech">Qdrant · Embeddings · Hybrid Search · N8N</div>
+      </div>
+      <div class="ai-branch">
+        <span class="ai-branch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+        <div class="ai-branch-name" data-t="ai_agents">Agentes IA</div>
+        <div class="ai-branch-desc">Asistentes diseñados para tareas concretas, con límites claros, revisión humana y criterios de uso definidos por caso.</div>
+        <div class="ai-branch-tech">Claude · ChatGPT · Gemini · Tool calling</div>
+      </div>
+      <div class="ai-branch">
+        <span class="ai-branch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7DDCFF" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></span>
+        <div class="ai-branch-name">Voice AI</div>
+        <div class="ai-branch-desc">Voicebots y asistentes conversacionales en fase de diseño y validación para casos donde la voz aporte valor real.</div>
+        <div class="ai-branch-tech">Vapi · Deepgram · Cartesia · Validación pendiente</div>
+      </div>
+      <div class="ai-branch">
+        <span class="ai-branch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+        <div class="ai-branch-name" data-t="ai_automat">Automatización</div>
+        <div class="ai-branch-desc">Orquestación de procesos con N8N, APIs, webhooks y lógica operativa para reducir trabajo manual.</div>
+        <div class="ai-branch-tech">N8N · Make · REST APIs · Webhooks</div>
+      </div>
+      <div class="ai-branch">
+        <span class="ai-branch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B87333" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+        <div class="ai-branch-name">LLMOps</div>
+        <div class="ai-branch-desc">Seguimiento de costes, trazabilidad y evaluación para sistemas IA cuando el proyecto lo requiere.</div>
+        <div class="ai-branch-tech">Langfuse · Helicone · Evaluación · Logs revisables</div>
+      </div>
+      <div class="ai-branch">
+        <span class="ai-branch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B11226" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <div class="ai-branch-name" data-t="ai_sec">Seguridad IA</div>
+        <div class="ai-branch-desc">Diseño prudente frente a prompt injection, exposición de datos, abuso de herramientas y decisiones sin revisión humana.</div>
+        <div class="ai-branch-tech">Privacy review · Límites operativos · Escalado humano</div>
+      </div>
+      <div class="ai-branch">
+        <span class="ai-branch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7DDCFF" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+        <div class="ai-branch-name">IA Local / Híbrida</div>
+        <div class="ai-branch-desc">Laboratorio local/híbrido en incorporación para pruebas con modelos locales, automatización y privacidad técnica. Benchmarks pendientes.</div>
+        <div class="ai-branch-tech">Ollama · Docker · modelos locales según pruebas</div>
+      </div>
+      <div class="ai-branch">
+        <span class="ai-branch-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+        <div class="ai-branch-name" data-t="ai_dev">Desarrollo asistido</div>
+        <div class="ai-branch-desc">Uso de asistentes de programación para documentación, revisión, prototipos, refactor y control de cambios con supervisión humana.</div>
+        <div class="ai-branch-tech">Claude Code · Cursor · Python · TypeScript</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- LO QUE CONSTRUYO -->
+<section id="construyo">
+  <div class="container">
+    <div class="s-label rv" data-t="build_label">01 — Servicios principales</div>
+    <h2 class="s-title rv" data-t="build_title">Lo que <span class="g">construyo</span></h2>
+    <p class="s-sub rv" data-t="build_sub">No vendo herramientas sueltas. Diseño sistemas que conectan conocimiento, procesos, automatización y ejecución.</p>
+    <div class="cards-g">
+      <div class="card rv"><div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><h3 class="c-title" data-t="c1_title">RAG &amp; Conocimiento interno</h3><p class="c-text" data-t="c1_text">Sistemas para convertir documentos, procesos y conocimiento disperso en respuestas útiles, consultables y reutilizables.</p></div>
+      <div class="card rv"><div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3 class="c-title" data-t="c2_title">Agentes IA</h3><p class="c-text" data-t="c2_text">Agentes diseñados para ejecutar tareas concretas, asistir decisiones y reducir trabajo manual sin vender magia.</p></div>
+      <div class="card rv"><div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3 class="c-title" data-t="c3_title">Automatización N8N</h3><p class="c-text" data-t="c3_text">Workflows con APIs, N8N, webhooks y lógica operativa para conectar herramientas y eliminar tareas repetitivas.</p></div>
+      <div class="card rv"><div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DDCFF" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div><h3 class="c-title" data-t="c4_title">Voicebots &amp; Chatbots</h3><p class="c-text" data-t="c4_text">Chatbots RAG multicanal y voicebots en fase de diseño para reservas, atención o soporte cuando el caso lo justifique.</p></div>
+      <div class="card rv"><div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B87333" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3 class="c-title" data-t="c5_title">Webs profesionales sin backend</h3><p class="c-text" data-t="c5_text">Páginas web rápidas, elegantes y mantenibles para negocios, profesionales y establecimientos. Diseño premium, estructura semántica y publicación estática cuando no hace falta backend.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SISTEMA -->
+<section id="sistema">
+  <div class="container">
+    <div class="s-label rv" data-t="sys_label">02 — Proceso</div>
+    <h2 class="s-title rv" data-t="sys_title_key">El sistema <span class="g">CDLAN</span></h2>
+    <p class="s-sub rv" data-t="sys_sub">No parto de la herramienta. Parto del problema, del proceso y del resultado que se puede validar.</p>
+    <div class="flow-wrap" id="flowWrap">
+      <div class="f-step"><div class="f-num-wrap"><div class="f-num">01</div></div><div class="f-content"><div class="f-name" data-t="f1">Diagnóstico</div><div class="f-desc" data-t="f1d">Detectar tareas repetitivas, fricción operativa y oportunidades reales.</div><div class="f-tag-line">Discovery · Pain points · Prioridades · Riesgo</div></div></div>
+      <div class="f-step"><div class="f-num-wrap"><div class="f-num">02</div></div><div class="f-content"><div class="f-name" data-t="f2">Datos</div><div class="f-desc" data-t="f2d">Ordenar fuentes, documentos, procesos y conocimiento operativo.</div><div class="f-tag-line">Ingesta · Limpieza · Estructura · Criterios</div></div></div>
+      <div class="f-step"><div class="f-num-wrap"><div class="f-num">03</div></div><div class="f-content"><div class="f-name">RAG</div><div class="f-desc" data-t="f3d">Convertir información en una base consultable con respuestas controladas y revisables.</div><div class="f-tag-line">Qdrant · Embeddings · Retrieval · Validación</div></div></div>
+      <div class="f-step"><div class="f-num-wrap"><div class="f-num">04</div></div><div class="f-content"><div class="f-name" data-t="f4">Agentes IA</div><div class="f-desc" data-t="f4d">Diseñar asistentes que ejecuten tareas concretas con límites claros.</div><div class="f-tag-line">Modelos · Tool calling · Revisión humana</div></div></div>
+      <div class="f-step"><div class="f-num-wrap"><div class="f-num">05</div></div><div class="f-content"><div class="f-name" data-t="f5">Automatización</div><div class="f-desc" data-t="f5d">Conectar herramientas, APIs y flujos de trabajo.</div><div class="f-tag-line">N8N · Webhooks · APIs · Lógica condicional</div></div></div>
+      <div class="f-step"><div class="f-num-wrap"><div class="f-num">06</div></div><div class="f-content"><div class="f-name">Dashboard</div><div class="f-desc" data-t="f6d">Visualizar estado, resultados y puntos de mejora cuando el proyecto lo requiera.</div><div class="f-tag-line">Métricas · Logs · Alertas · Seguimiento</div></div></div>
+      <div class="f-step"><div class="f-num-wrap"><div class="f-num">07</div></div><div class="f-content"><div class="f-name" data-t="f7">Mejora</div><div class="f-desc" data-t="f7d">Medir, corregir y ampliar sin romper el sistema.</div><div class="f-tag-line">Iteración · Documentación · Mantenimiento</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="container">
+    <div class="s-label rv">03 — GitHub</div>
+    <h2 class="s-title rv" data-t="proj_gold">Proyectos <span class="g">&amp; casos</span></h2>
+    <p class="s-sub rv" data-t="proj_sub">Honestidad técnica: laboratorio no es uso en clientes. Cada card indica el estado real.</p>
+    <div class="proj-g">
+      <div class="proj-card rv">
+        <div class="p-head"><div><div class="p-type" data-t="pt1">Sistema terminal</div><div class="p-name">cdlan-terminal-profile</div></div><span class="p-status s-ok">Público</span></div>
+        <div class="p-body">
+          <div><div class="p-row-label" data-t="prob">Problema</div><div class="p-row-text" data-t="p1a">Configurar y restaurar un entorno terminal profesional es frágil, manual y difícil de auditar.</div></div>
+          <div><div class="p-row-label" data-t="sol">Solución</div><div class="p-row-text" data-t="p1b">Sistema de backup/restauración con verificación, dry-run y límites de seguridad documentados.</div></div>
+          <div><div class="p-row-label" data-t="res">Resultado</div><div class="p-row-text" data-t="p1c">Entorno reproducible, controlado y verificable.</div></div>
+          <div class="chips"><span class="chip">Linux</span><span class="chip">Zsh</span><span class="chip">Powerlevel10k</span><span class="chip">Bash</span><span class="chip">GitHub</span></div>
+        </div>
+        <div class="p-foot"><a href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener" class="btn-g" data-t="view_gh">Ver en GitHub ↗</a></div>
+      </div>
+      <div class="proj-card rv">
+        <div class="p-head"><div><div class="p-type" data-t="pt2">Laboratorio IA local</div><div class="p-name">Beelink SER8 — IA Híbrida</div></div><span class="p-status s-lab">Lab activo</span></div>
+        <div class="p-body">
+          <div><div class="p-row-label" data-t="prob">Problema</div><div class="p-row-text" data-t="p2a">Depender solo de cloud puede aumentar costes, exposición de datos y dependencia de terceros.</div></div>
+          <div><div class="p-row-label" data-t="sol">Solución</div><div class="p-row-text" data-t="p2b">Laboratorio local/híbrido con Beelink SER8 para pruebas de agentes, automatización, RAG y modelos locales según pruebas.</div></div>
+          <div><div class="p-row-label" data-t="res">Resultado</div><div class="p-row-text" data-t="p2c">Base técnica en validación. Benchmarks pendientes antes de prometer rendimiento o uso en clientes.</div></div>
+          <div class="chips"><span class="chip">Beelink SER8</span><span class="chip">Ollama</span><span class="chip">N8N</span><span class="chip">Qdrant</span><span class="chip">Docker</span><span class="chip">Tailscale</span></div>
+        </div>
+        <div class="p-foot"><a href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener" class="btn-g" data-t="view_arch">Ver arquitectura ↗</a></div>
+      </div>
+      <div class="proj-card rv">
+        <div class="p-head"><div><div class="p-type" data-t="pt3">Workflows operativos</div><div class="p-name">N8N Automatizaciones CDLAN</div></div><span class="p-status s-lab">Interno / Lab</span></div>
+        <div class="p-body">
+          <div><div class="p-row-label" data-t="prob">Problema</div><div class="p-row-text" data-t="p3a">Muchas horas se pierden en tareas repetitivas: copiar datos, organizar información, responder mensajes o mover contenido entre herramientas.</div></div>
+          <div><div class="p-row-label" data-t="sol">Solución</div><div class="p-row-text" data-t="p3b">Workflows internos con N8N, APIs y webhooks para probar automatización de procesos.</div></div>
+          <div><div class="p-row-label" data-t="res">Resultado</div><div class="p-row-text" data-t="p3c">Base interna para validar patrones reutilizables antes de ofrecerlos como servicio.</div></div>
+          <div class="chips"><span class="chip">N8N</span><span class="chip">APIs</span><span class="chip">Webhooks</span><span class="chip">Automatización</span><span class="chip">Lab interno</span></div>
+        </div>
+        <div class="p-foot"><a href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener" class="btn-g" data-t="view_wf">Ver workflows ↗</a></div>
+      </div>
+      <div class="proj-card rv">
+        <div class="p-head"><div><div class="p-type" data-t="pt4">RAG documental</div><div class="p-name">RAG Documental CDLAN</div></div><span class="p-status s-lab">Lab activo</span></div>
+        <div class="p-body">
+          <div><div class="p-row-label" data-t="prob">Problema</div><div class="p-row-text" data-t="p4a">Conocimiento técnico disperso en múltiples documentos sin forma de consultarlo rápido.</div></div>
+          <div><div class="p-row-label" data-t="sol">Solución</div><div class="p-row-text" data-t="p4b">Base vectorial y flujo de ingesta para consultar información con trazabilidad y revisión.</div></div>
+          <div><div class="p-row-label" data-t="res">Resultado</div><div class="p-row-text" data-t="p4c">Sistema en validación interna. La precisión depende del corpus, las pruebas y los criterios de aceptación.</div></div>
+          <div class="chips"><span class="chip">Qdrant</span><span class="chip">Embeddings</span><span class="chip">N8N</span><span class="chip">Evaluación</span><span class="chip">Lab interno</span></div>
+        </div>
+        <div class="p-foot"><a href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener" class="btn-g" data-t="view_case">Ver caso ↗</a></div>
+      </div>
+      <!-- NUEVO: Desarrollo web premium -->
+      <div class="proj-card rv">
+        <div class="p-head"><div><div class="p-type" data-t="p5_type">Desarrollo web profesional</div><div class="p-name" data-t="p5_name">Webs sin backend para negocios</div></div><span class="p-status s-ok">Servicio activo</span></div>
+        <div class="p-body">
+          <div><div class="p-row-label" data-t="prob">Problema</div><div class="p-row-text" data-t="p5_prob">Negocios, profesionales y establecimientos necesitan presencia digital clara, rápida y mantenible sin depender de builders genéricos ni sistemas innecesarios.</div></div>
+          <div><div class="p-row-label" data-t="sol">Solución</div><div class="p-row-text" data-t="p5_sol">Páginas web estáticas con diseño premium, estructura semántica, scroll effects y publicación en GitHub Pages u hosting estático.</div></div>
+          <div><div class="p-row-label" data-t="res">Resultado</div><div class="p-row-text" data-t="p5_res">Presencia digital limpia, ligera y mantenible cuando no hace falta backend. Esta web sirve como muestra del enfoque visual y técnico.</div></div>
+          <div class="chips"><span class="chip">HTML/CSS/JS</span><span class="chip">GSAP</span><span class="chip">GitHub Pages</span><span class="chip">Estructura semántica</span><span class="chip">Diseño premium</span></div>
+        </div>
+        <div class="p-foot"><a href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener" class="btn-g">Ver repositorios ↗</a></div>
+      </div>
+    </div>
+    <div style="margin-top:2rem;text-align:center">
+      <a href="https://github.com/CoderDeltaLAN?tab=repositories" target="_blank" rel="noopener" class="btn-s" data-t="all_repos">Ver todos los repos en GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- STACK -->
+<section id="stack-sec">
+  <div class="container">
+    <div class="s-label rv">04 — Tecnología</div>
+    <h2 class="s-title rv">Stack de <span class="g">trabajo actual</span></h2>
+    <p class="s-sub rv" data-t="stack_sub">Herramientas al servicio del problema, no al revés. Ni el stack más moderno ni el más complejo: el que resuelve el caso.</p>
+    <div class="stack-cats">
+      <div class="s-cat rv"><div class="s-cat-label" data-t="sk1">Modelos IA</div><div class="s-chips"><span class="sc hi">Claude</span><span class="sc hi">ChatGPT</span><span class="sc">Gemini</span><span class="sc">Qwen</span><span class="sc">Ollama</span><span class="sc">Modelos open-source según pruebas</span></div></div>
+      <div class="s-cat rv"><div class="s-cat-label" data-t="sk2">Automatización</div><div class="s-chips"><span class="sc hi">N8N</span><span class="sc">Relevance AI</span><span class="sc">Make</span><span class="sc">REST APIs</span><span class="sc">Webhooks</span></div></div>
+      <div class="s-cat rv"><div class="s-cat-label" data-t="sk3">RAG & Vector</div><div class="s-chips"><span class="sc hi">Qdrant</span><span class="sc hi">Embeddings</span><span class="sc">Langfuse</span><span class="sc">Helicone</span><span class="sc">Evaluación</span></div></div>
+      <div class="s-cat rv"><div class="s-cat-label">Voice Stack</div><div class="s-chips"><span class="sc">Vapi</span><span class="sc">Retell</span><span class="sc">Deepgram</span><span class="sc">Cartesia</span></div></div>
+      <div class="s-cat rv"><div class="s-cat-label" data-t="sk4">Desarrollo</div><div class="s-chips"><span class="sc hi">Claude Code</span><span class="sc hi">Cursor</span><span class="sc">Python 3.12</span><span class="sc">Node.js</span><span class="sc">TypeScript</span><span class="sc">Bash/Zsh</span><span class="sc">GSAP</span><span class="sc">HTML/CSS/JS</span><span class="sc">GitHub</span></div></div>
+      <div class="s-cat rv"><div class="s-cat-label" data-t="sk5">Sistemas</div><div class="s-chips"><span class="sc hi">Linux / CachyOS</span><span class="sc">Beelink SER8</span><span class="sc">Docker</span><span class="sc">Tailscale</span><span class="sc">GitHub Actions</span></div></div>
+      <div class="s-cat rv"><div class="s-cat-label" data-t="sk6">Seguridad</div><div class="s-chips"><span class="sc">Revisión de privacidad</span><span class="sc">Escalado humano</span><span class="sc">privacidad por proyecto</span><span class="sc">revisión legal por proyecto</span></div></div>
+      <div class="s-cat rv"><div class="s-cat-label">Deploy</div><div class="s-chips"><span class="sc">GitHub Pages</span><span class="sc">Vercel si procede</span><span class="sc">Docker Compose si procede</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="s-label rv" data-t="srv_label">05 — Oferta</div>
+    <h2 class="s-title rv" data-t="srv_gold">Cómo puedo <span class="g">ayudarte</span></h2>
+    <p class="s-sub rv" data-t="srv_sub">Servicios claros, entregables concretos y sistemas mantenibles.</p>
+    <div class="srv-g">
+      <div class="srv-card rv">
+        <div class="srv-num">01 / DIAGNÓSTICO</div>
+        <div class="srv-title" data-t="s1">Diagnóstico inicial</div>
+        <div class="srv-desc" data-t="s1d">Revisión del proceso, tareas repetitivas y oportunidades de mejora.</div>
+        <ul class="srv-list">
+          <li data-t="s1i1">Revisión de procesos manuales actuales</li>
+          <li data-t="s1i2">Detección de automatizaciones posibles</li>
+          <li data-t="s1i3">Priorización por impacto, riesgo y complejidad</li>
+          <li data-t="s1i4">Propuesta de siguiente fase si tiene sentido</li>
+        </ul>
+        <div class="srv-price" data-t="s1p">Diagnóstico inicial según caso</div>
+        <a href="#contacto" class="btn-g" style="margin-top:1rem;display:inline-block" onclick="setTimeout(()=>{openContactForm()},400)" data-t="s1cta">Solicitar diagnóstico inicial</a>
+      </div>
+      <div class="srv-card rv">
+        <div class="srv-num">02 / IMPLEMENTACIÓN</div>
+        <div class="srv-title" data-t="s2">Sistema IA interno</div>
+        <div class="srv-desc" data-t="s2d">Diseño e implementación por fases de RAG, agentes, automatizaciones y documentación operativa.</div>
+        <ul class="srv-list">
+          <li data-t="s2i1">Arquitectura del sistema</li>
+          <li data-t="s2i2">Base documental y criterios de consulta</li>
+          <li data-t="s2i3">Agentes IA o asistentes según necesidad real</li>
+          <li data-t="s2i4">Automatización N8N y documentación inicial</li>
+        </ul>
+        <div class="srv-price" data-t="s2p">Implementación por fases · Presupuesto según alcance</div>
+        <a href="#contacto" class="btn-g" style="margin-top:1rem;display:inline-block" onclick="setTimeout(()=>{openContactForm()},400)" data-t="s2cta">Diseñar sistema</a>
+      </div>
+      <div class="srv-card rv">
+        <div class="srv-num">03 / MANTENIMIENTO</div>
+        <div class="srv-title" data-t="s3">Mejora continua</div>
+        <div class="srv-desc" data-t="s3d">Soporte, revisión y evolución del sistema para corregir, ampliar y mantener sin romper lo que ya funciona.</div>
+        <ul class="srv-list">
+          <li data-t="s3i1">Revisión y corrección de errores</li>
+          <li data-t="s3i2">Mejora de prompts y flujos</li>
+          <li data-t="s3i3">Nuevas integraciones por fases</li>
+          <li data-t="s3i4">Seguimiento y mantenimiento opcional</li>
+        </ul>
+        <div class="srv-price" data-t="s3p">Mantenimiento opcional · Presupuesto según alcance</div>
+        <a href="#contacto" class="btn-g" style="margin-top:1rem;display:inline-block" onclick="setTimeout(()=>{openContactForm()},400)" data-t="s3cta">Ver mantenimiento</a>
+      </div>
+    </div>
+    <div class="cita rv">
+      <p class="cita-t" data-t="cita1">«La IA no corrige procesos mal organizados, los amplifica. Si el proceso es caótico y se automatiza, el resultado es caos más rápido y con mayor escala de daño.»</p>
+      <p class="cita-a">— Principio operativo CDLAN · Yosvel Delta</p>
+    </div>
+    <div class="fiscal-box rv">
+      <p>◈ CANARIAS</p>
+        <p style="font-size:.85rem;color:var(--silver-d);line-height:1.6">Operando desde Tenerife Sur. Condiciones fiscales y de facturación se revisan caso por caso según el tipo de cliente y operación.</p>
+      </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- MÉTODO -->
+<section id="metodo">
+  <div class="container">
+    <div class="s-label rv" data-t="met_label">06 — Proceso</div>
+    <h2 class="s-title rv" data-t="met_title_key">Método <span class="g">CDLAN</span></h2>
+    <p class="s-sub rv" data-t="met_sub">Primero se entiende el problema. Después se decide si la IA aporta valor real.</p>
+    <div class="met-line">
+      <div class="met-step rv"><div class="met-num">01</div><div class="met-name" data-t="m1">Entender</div><div class="met-desc" data-t="m1d">Proceso real, fricción, herramientas, tareas repetitivas y objetivo.</div></div>
+      <div class="met-step rv"><div class="met-num">02</div><div class="met-name" data-t="m2">Evaluar</div><div class="met-desc" data-t="m2d">Decidir si IA, automatización o una web estática aportan valor real.</div></div>
+      <div class="met-step rv"><div class="met-num">03</div><div class="met-name" data-t="m3">Diseñar</div><div class="met-desc" data-t="m3d">Definir alcance, entregables, límites, riesgos y fases.</div></div>
+      <div class="met-step rv"><div class="met-num">04</div><div class="met-name" data-t="m4">Ejecutar</div><div class="met-desc" data-t="m4d">Implementar por fases pequeñas, revisables y mantenibles.</div></div>
+      <div class="met-step rv"><div class="met-num">05</div><div class="met-name" data-t="m5">Medir</div><div class="met-desc" data-t="m5d">Validar contra criterios acordados, no contra entusiasmo.</div></div>
+      <div class="met-step rv"><div class="met-num">06</div><div class="met-name" data-t="m6">Mejorar</div><div class="met-desc" data-t="m6d">Ampliar, corregir y documentar sin romper el sistema.</div></div>
+    </div>
+    <div class="cita rv">
+      <p class="cita-t" data-t="cita2">«Si una tarea se repite, se documenta. Si se documenta, se puede sistematizar. Si se sistematiza, se puede automatizar.»</p>
+      <p class="cita-a">— Principio CDLAN</p>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- VERTICALES -->
+<section id="verticales">
+  <div class="container">
+    <div class="s-label rv" data-t="vert_label">07 — Sectores</div>
+    <h2 class="s-title rv" data-t="vert_gold">Sectores donde <span class="g">puedo aportar valor</span></h2>
+    <p class="s-sub rv" data-t="vert_sub">Sin afirmar demanda verificada ni datos inventados. Sectores donde el tipo de trabajo de CDLAN encaja con problemas reales.</p>
+    <div class="vert-g">
+      <div class="vert-card rv"><span class="vert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div class="vert-name" data-t="v1">Hostelería &amp; Turismo</div><div class="vert-desc" data-t="v1d">Reservas, FAQs, atención inicial, documentación interna, automatización de mensajes y webs profesionales.</div></div>
+      <div class="vert-card rv"><span class="vert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7DDCFF" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><div class="vert-name" data-t="v2">Clínicas &amp; Salud</div><div class="vert-desc" data-t="v2d">Citas, documentación interna, preguntas frecuentes y procesos administrativos. Siempre con revisión de privacidad y escalado humano.</div></div>
+      <div class="vert-card rv"><span class="vert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span><div class="vert-name" data-t="v3">Inmobiliarias</div><div class="vert-desc" data-t="v3d">Cualificación inicial de leads, fichas, respuestas frecuentes, seguimiento y organización de información.</div></div>
+      <div class="vert-card rv"><span class="vert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B87333" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span><div class="vert-name" data-t="v4">Asesorías &amp; Despachos</div><div class="vert-desc" data-t="v4d">RAG documental interno, triage de correos, SOPs, automatización administrativa y documentación operativa.</div></div>
+      <div class="vert-card rv"><span class="vert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7DDCFF" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></span><div class="vert-name" data-t="v5">E-commerce</div><div class="vert-desc" data-t="v5d">Soporte postventa, FAQs, seguimiento de pedidos, stock y automatización de tareas repetitivas.</div></div>
+      <div class="vert-card rv"><span class="vert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/></svg></span><div class="vert-name" data-t="v6">Cualquier negocio con procesos repetitivos</div><div class="vert-desc" data-t="v6d">Si hay tareas manuales frecuentes, se puede estudiar si conviene documentar, sistematizar, automatizar o crear una web más clara.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container cont-inner">
+    <div class="s-label rv" style="justify-content:center">08 — Contacto</div>
+    <h2 class="cont-title rv" data-t="cont_gold">Hablemos de <span style="color:var(--gold)">tu sistema</span></h2>
+    <p class="cont-sub rv" data-t="cont_sub">Cuéntame qué proceso quieres dejar de hacer manualmente o qué presencia digital necesitas mejorar.</p>
+
+    <!-- FORMULARIO DESPLEGABLE -->
+    <div class="cont-form-wrap rv">
+      <button class="cont-form-toggle" id="formToggle" onclick="toggleForm()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span data-t="form_toggle">Escribirme un email directamente</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="cont-form-panel" id="formPanel">
+        <form class="cont-form" id="contactForm" onsubmit="sendMail(event)">
+          <div>
+            <label data-t="form_name">Nombre</label>
+            <input type="text" id="fName" placeholder="Tu nombre o empresa" required>
+          </div>
+          <div>
+            <label data-t="form_email">Tu email</label>
+            <input type="email" id="fEmail" placeholder="tu@email.com" required>
+          </div>
+          <div>
+            <label data-t="form_subject">Asunto</label>
+            <input type="text" id="fSubject" placeholder="Diagnóstico IA / Consulta / Propuesta...">
+          </div>
+          <div>
+            <label data-t="form_msg">Mensaje</label>
+            <textarea id="fMsg" placeholder="Cuéntame tu proceso, tu negocio, qué haces manualmente y qué resultado te gustaría conseguir." required></textarea>
+          </div>
+          <button type="submit" class="cont-form-send" data-t="form_send">Enviar mensaje →</button>
+          <p style="font-family:var(--fm);font-size:.6rem;color:rgba(111,111,111,.5);text-align:center;margin-top:-.25rem" data-t="form_note">Abre tu cliente de correo con el mensaje listo · Sin backend · Sin datos almacenados</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="cont-links rv">
+      <a href="mailto:contacto.cdlan@proton.me" class="cont-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        contacto.cdlan@proton.me
+      </a>
+      <a href="https://github.com/CoderDeltaLAN" target="_blank" rel="noopener" class="cont-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub · CoderDeltaLAN
+      </a>
+
+
+
+    </div>
+
+    <p class="cont-nota rv" data-t="cont_nota">Sin formulario backend · Sin datos almacenados · Respuesta según disponibilidad<br>Adeje, Tenerife Sur · Canarias · Servicios remotos según alcance</p>
+  </div>
+</section>
+
+<footer>
+  <a href="https://github.com/CoderDeltaLAN" target="_blank" rel="noopener" class="f-brand" style="text-decoration:none">CDLAN <span>·</span> Yosvel Delta</a>
+  <div class="f-tag">IA aplicada · Automatización · RAG · Webs sin backend · Tenerife Sur</div>
+  <div class="f-copy">&copy; 2026 <a href="https://github.com/CoderDeltaLAN" target="_blank" rel="noopener noreferrer">CoderDeltaLAN</a> · Menos ruido. Más sistema.</div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════
+   FRONTEND SAFETY HELPERS
+══════════════════════════════════════════ */
+/* Basic iframe guard */
+if(window.top!==window.self){
+  try{window.top.location.replace(window.location.href);}catch(e){document.body.innerHTML='';}
+}
+/* Deshabilitar drag de imágenes */
+document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault();});
+/* Prevenir context menu en producción (opcional, comentar si se quiere) */
+/* document.addEventListener('contextmenu',e=>e.preventDefault()); */
+
+/* ══════════════════════════════════════════
+   TRANSLATIONS
+══════════════════════════════════════════ */
+const T={
+es:{
+  badge:'IA Aplicada · Automatización · RAG · Agentes · Webs sin backend · Tenerife Sur',
+  hero_claim:'IA aplicada, automatización y páginas web profesionales para convertir procesos dispersos en sistemas claros, útiles y mantenibles.',
+  hero_sub:'Diseño soluciones con RAG, agentes IA, automatización N8N, documentación operativa y desarrollo web estático sin backend cuando el negocio no necesita complejidad innecesaria.',
+  hero_trust:'Portfolio público · Motor privado · Sin métricas inventadas · Sin clientes falsos · Adeje, Tenerife Sur',
+  nav_services:'Servicios',nav_projects:'Proyectos',nav_method:'Método',nav_sectors:'Sectores',nav_contact:'Contacto',nav_cta:'Diagnóstico inicial',
+  ai_label:'00 — Inteligencia Artificial',ai_title:'El ecosistema IA',ai_title2:'que integro',
+  ai_sub:'Cada herramienta tiene su lugar. La decisión no parte de la moda, sino del problema, los datos, el riesgo y el resultado esperado.',
+  ai_agents:'Agentes IA',ai_automat:'Automatización',ai_sec:'Seguridad IA',ai_dev:'Desarrollo asistido',
+  build_label:'01 — Servicios principales',build_title:'Lo que <span class="g">construyo</span>',build_sub:'No vendo herramientas sueltas. Diseño sistemas que conectan conocimiento, procesos, automatización y ejecución.',
+  c1_title:'RAG & Conocimiento interno',c1_text:'Sistemas para convertir documentos, procesos y conocimiento disperso en respuestas útiles, consultables y reutilizables.',
+  c2_title:'Agentes IA',c2_text:'Agentes diseñados para ejecutar tareas concretas, asistir decisiones y reducir trabajo manual sin vender magia.',
+  c3_title:'Automatización N8N',c3_text:'Workflows con APIs, N8N, webhooks y lógica operativa para conectar herramientas y eliminar tareas repetitivas.',
+  c4_title:'Voicebots & Chatbots',c4_text:'Chatbots RAG multicanal y voicebots en fase de diseño para reservas, atención o soporte cuando el caso lo justifique.',
+  c5_title:'Webs profesionales sin backend',c5_text:'Páginas web rápidas, elegantes y mantenibles para negocios, profesionales y establecimientos. Diseño premium, estructura semántica y publicación estática cuando no hace falta backend.',
+  sys_label:'02 — Proceso',sys_sub:'No parto de la herramienta. Parto del problema, del proceso y del resultado que se puede validar.',
+  f1:'Diagnóstico',f1d:'Detectar tareas repetitivas, fricción operativa y oportunidades reales.',
+  f2:'Datos',f2d:'Ordenar fuentes, documentos, procesos y conocimiento operativo.',
+  f3d:'Convertir información en una base consultable con respuestas controladas y revisables.',
+  f4:'Agentes IA',f4d:'Diseñar asistentes que ejecuten tareas concretas con límites claros.',
+  f5:'Automatización',f5d:'Conectar herramientas, APIs y flujos de trabajo.',
+  f6d:'Visualizar estado, resultados y puntos de mejora cuando el proyecto lo requiera.',
+  f7:'Mejora',f7d:'Medir, corregir y ampliar sin romper el sistema.',
+  proj_gold:'Proyectos <span class="g">&amp; casos</span>',proj_sub:'Honestidad técnica: laboratorio no es uso en clientes. Cada card indica el estado real.',
+  pt1:'Sistema terminal',pt2:'Laboratorio IA local',pt3:'Workflows operativos',pt4:'RAG documental',
+  p5_type:'Desarrollo web profesional',p5_name:'Webs sin backend para negocios',
+  prob:'Problema',sol:'Solución',res:'Resultado',
+  p1a:'Configurar y restaurar un entorno terminal profesional puede ser frágil, manual y difícil de auditar.',
+  p1b:'Sistema de backup/restauración con verificación, dry-run y límites de seguridad documentados.',
+  p1c:'Entorno más reproducible, controlado y verificable.',
+  p2a:'Depender solo de cloud puede aumentar costes, exposición de datos y dependencia de terceros.',
+  p2b:'Laboratorio local/híbrido con Beelink SER8 para pruebas de agentes, automatización, RAG y modelos locales.',
+  p2c:'Base técnica en validación. Benchmarks pendientes antes de prometer rendimiento o uso en clientes.',
+  p3a:'Muchas horas se pierden en tareas repetitivas: copiar datos, organizar información, responder mensajes.',
+  p3b:'Workflows internos con N8N, APIs y webhooks para probar automatización de procesos.',
+  p3c:'Base interna para validar patrones reutilizables antes de ofrecerlos como servicio.',
+  p4a:'Conocimiento técnico disperso en documentos, notas y procedimientos sin una forma rápida de consulta.',
+  p4b:'Base vectorial y flujo de ingesta para consultar información con trazabilidad y revisión.',
+  p4c:'Sistema en validación interna. La precisión depende del corpus, las pruebas y los criterios de aceptación.',
+  p5_prob:'Negocios, profesionales y establecimientos necesitan presencia digital clara, rápida y mantenible sin depender de builders genéricos.',
+  p5_sol:'Páginas web estáticas con diseño premium, estructura semántica y publicación en GitHub Pages u hosting estático.',
+  p5_res:'Presencia digital limpia y mantenible cuando no hace falta backend. Esta web sirve como muestra del enfoque.',
+  view_gh:'Ver en GitHub ↗',view_arch:'Ver arquitectura ↗',view_wf:'Ver workflows ↗',view_case:'Ver caso ↗',
+  all_repos:'Ver repositorios en GitHub ↗',
+  stack_gold:'de trabajo actual',stack_sub:'Herramientas al servicio del problema, no al revés.',
+  sk1:'Modelos IA',sk2:'Automatización',sk3:'RAG & Vector',sk4:'Desarrollo',sk5:'Sistemas',sk6:'Seguridad',
+  srv_label:'05 — Oferta',srv_gold:'Cómo puedo <span class="g">ayudarte</span>',srv_sub:'Servicios claros, entregables concretos y sistemas mantenibles.',
+  s1:'Diagnóstico inicial',s1d:'Revisión del proceso, tareas repetitivas, herramientas actuales y oportunidades de mejora.',
+  s1i1:'Revisión de procesos manuales actuales',s1i2:'Detección de automatizaciones posibles',
+  s1i3:'Priorización por impacto, riesgo y complejidad',s1i4:'Propuesta de siguiente fase si tiene sentido',
+  s1p:'Diagnóstico inicial según caso',s1cta:'Solicitar diagnóstico inicial',
+  s2:'Sistema IA interno',s2d:'Diseño e implementación por fases de RAG, agentes, automatizaciones y documentación operativa.',
+  s2i1:'Arquitectura del sistema',s2i2:'Base documental y criterios de consulta',
+  s2i3:'Agentes IA o asistentes según necesidad real',s2i4:'Automatización N8N y documentación inicial',
+  s2p:'Implementación por fases · Presupuesto según alcance',s2cta:'Diseñar sistema',
+  s3:'Mejora continua',s3d:'Soporte, revisión y evolución del sistema para corregir, ampliar y mantener sin romper lo que ya funciona.',
+  s3i1:'Revisión y corrección de errores',s3i2:'Mejora de prompts, flujos y documentación',
+  s3i3:'Nuevas integraciones por fases',s3i4:'Seguimiento y mantenimiento opcional',
+  s3p:'Mantenimiento opcional · Presupuesto según alcance',s3cta:'Ver mantenimiento',
+  cita1:'«La IA no corrige procesos mal organizados, los amplifica. Si el proceso es caótico y se automatiza, el resultado es caos más rápido y con mayor escala de daño.»',
+  cita2:'«Si una tarea se repite, se documenta. Si se documenta, se puede sistematizar. Si se sistematiza, se puede automatizar.»',
+  fiscal:'Operando desde Tenerife Sur. Condiciones fiscales y de facturación se revisan caso por caso según el tipo de cliente y operación.',
+  met_label:'06 — Proceso',met_sub:'Primero se entiende el problema. Después se decide si la IA aporta valor real.',
+  m1:'Entender',m1d:'Proceso real, fricción, herramientas, tareas repetitivas y objetivo.',
+  m2:'Evaluar',m2d:'Decidir si IA, automatización o una web estática aportan valor real.',
+  m3:'Diseñar',m3d:'Definir alcance, entregables, límites, riesgos y fases.',
+  m4:'Ejecutar',m4d:'Implementar por fases pequeñas, revisables y mantenibles.',
+  m5:'Medir',m5d:'Validar contra criterios acordados, no contra entusiasmo.',
+  m6:'Mejorar',m6d:'Ampliar, corregir y documentar sin romper el sistema.',
+  vert_label:'07 — Sectores',vert_gold:'Sectores donde <span class="g">puedo aportar valor</span>',
+  vert_sub:'Sin afirmar demanda verificada ni datos inventados. Sectores donde el tipo de trabajo de CDLAN encaja con problemas reales.',
+  v1:'Hostelería & Turismo',v1d:'Reservas, FAQs, atención inicial, documentación interna, automatización de mensajes y webs profesionales.',
+  v2:'Clínicas & Salud',v2d:'Citas, documentación interna, preguntas frecuentes y procesos administrativos. Siempre con revisión de privacidad y escalado humano.',
+  v3:'Inmobiliarias',v3d:'Cualificación inicial de leads, fichas, respuestas frecuentes, seguimiento y organización de información.',
+  v4:'Asesorías & Despachos',v4d:'RAG documental interno, triage de correos, SOPs, automatización administrativa y documentación operativa.',
+  v5:'E-commerce',v5d:'Soporte postventa, FAQs, seguimiento de pedidos, stock y automatización de tareas repetitivas.',
+  v6:'Cualquier negocio con procesos repetitivos',v6d:'Si hay tareas manuales frecuentes, se puede estudiar si conviene documentar, sistematizar, automatizar o crear una web más clara.',
+  cont_gold:'Hablemos de <span style="color:var(--gold)">tu sistema</span>',cont_sub:'Cuéntame qué proceso quieres dejar de hacer manualmente o qué presencia digital necesitas mejorar.',
+  cont_nota:'Sin formulario backend · Sin datos almacenados · Respuesta según disponibilidad<br>Adeje, Tenerife Sur · Canarias · Servicios remotos según alcance',
+  form_toggle:'Escribirme un email directamente',
+  form_name:'Nombre',form_email:'Tu email',form_subject:'Asunto',form_msg:'Mensaje',
+  form_send:'Enviar mensaje →',form_note:'Abre tu cliente de correo con el mensaje listo · Sin backend · Sin datos almacenados'
+,
+  cta_projects:'Ver proyectos',
+  cta_diag:'Solicitar diagnóstico inicial',
+  sys_title_key:'El sistema <span class="g">CDLAN</span>',
+  met_title_key:'Método <span class="g">CDLAN</span>',
+  srv_gold:'Cómo puedo <span class="g">ayudarte</span>',
+  vert_gold:'Sectores donde <span class="g">puedo aportar valor</span>'},
+en:{
+  badge:'Applied AI · Automation · RAG · Agents · Static web · Tenerife South',
+  hero_claim:'Applied AI, automation and professional websites to turn scattered processes into clear, useful and maintainable systems.',
+  hero_sub:'I design solutions with RAG, AI agents, N8N automation, operational documentation and static web development without backend when the business does not need unnecessary complexity.',
+  hero_trust:'Public portfolio · Private engine · No invented metrics · No fake clients · Adeje, Tenerife South',
+  nav_services:'Services',nav_projects:'Projects',nav_method:'Method',nav_sectors:'Sectors',nav_contact:'Contact',nav_cta:'Initial diagnosis',
+  ai_label:'00 — Artificial Intelligence',ai_title:'The AI ecosystem',ai_title2:'I work with',
+  ai_sub:'Every tool has its place. The decision does not come from trends but from the problem, the data, the risk and the expected outcome.',
+  ai_agents:'AI Agents',ai_automat:'Automation',ai_sec:'AI Security',ai_dev:'AI-assisted development',
+  build_label:'01 — Core services',build_title:'What I <span class="g">build</span>',build_sub:'I do not sell loose tools. I design systems connecting knowledge, processes, automation and execution.',
+  c1_title:'RAG & Internal knowledge',c1_text:'Systems to turn documents, processes and scattered knowledge into useful, queryable and reusable answers.',
+  c2_title:'AI Agents',c2_text:'Agents designed to execute concrete tasks, assist decisions and reduce manual work without selling magic.',
+  c3_title:'N8N Automation',c3_text:'Workflows with APIs, N8N, webhooks and operational logic to connect tools and eliminate repetitive tasks.',
+  c4_title:'Voicebots & Chatbots',c4_text:'Multichannel RAG chatbots and voicebots in design phase for bookings, support or assistance when the case justifies it.',
+  c5_title:'Professional websites without backend',c5_text:'Fast, elegant and maintainable websites for businesses, professionals and establishments. Premium design, semantic structure and static publishing.',
+  sys_label:'02 — Process',sys_sub:'I do not start from the tool. I start from the problem, the process and the outcome that can be validated.',
+  f1:'Diagnosis',f1d:'Detect repetitive tasks, operational friction and real opportunities.',
+  f2:'Data',f2d:'Organise sources, documents, processes and operational knowledge.',
+  f3d:'Turn information into a queryable base with controlled and reviewable answers.',
+  f4:'AI Agents',f4d:'Design assistants that execute concrete tasks with clear boundaries.',
+  f5:'Automation',f5d:'Connect tools, APIs and workflows.',
+  f6d:'Visualise status, results and improvement points when the project requires it.',
+  f7:'Improve',f7d:'Measure, fix and expand without breaking the system.',
+  proj_gold:'Projects <span class="g">&amp; cases</span>',proj_sub:'Technical honesty: lab is not client production. Each card shows the real status.',
+  pt1:'Terminal system',pt2:'Local AI lab',pt3:'Operative workflows',pt4:'RAG documentation',
+  p5_type:'Professional web development',p5_name:'Static websites for businesses',
+  prob:'Problem',sol:'Solution',res:'Result',
+  p1a:'Setting up and restoring a professional terminal environment can be fragile, manual and hard to audit.',
+  p1b:'Backup/restore system with verification, dry-run and documented security limits.',
+  p1c:'More reproducible, controlled and verifiable environment.',
+  p2a:'Depending only on cloud can increase costs, data exposure and third-party dependency.',
+  p2b:'Local/hybrid lab with Beelink SER8 for testing agents, automation, RAG and local models.',
+  p2c:'Technical base under validation. Benchmarks pending before promising performance or client use.',
+  p3a:'Many hours are lost in repetitive tasks: copying data, organising information, answering messages.',
+  p3b:'Internal workflows with N8N, APIs and webhooks to test process automation.',
+  p3c:'Internal base to validate reusable patterns before offering them as a service.',
+  p4a:'Technical knowledge scattered in documents, notes and procedures without a fast query method.',
+  p4b:'Vector base and ingestion flow to query information with traceability and review.',
+  p4c:'System under internal validation. Precision depends on corpus, tests and acceptance criteria.',
+  p5_prob:'Businesses, professionals and establishments need clear, fast and maintainable digital presence without depending on generic builders.',
+  p5_sol:'Static websites with premium design, semantic structure and publishing on GitHub Pages or static hosting.',
+  p5_res:'Clean and maintainable digital presence when backend is not needed. This website serves as an example of the approach.',
+  view_gh:'View on GitHub ↗',view_arch:'View architecture ↗',view_wf:'View workflows ↗',view_case:'View case ↗',
+  all_repos:'View repositories on GitHub ↗',
+  stack_gold:'current stack',stack_sub:'Tools serving the problem, not the other way around.',
+  sk1:'AI Models',sk2:'Automation',sk3:'RAG & Vector',sk4:'Development',sk5:'Systems',sk6:'Security',
+  srv_label:'05 — Offer',srv_gold:'How I can <span class="g">help you</span>',srv_sub:'Clear services, concrete deliverables and maintainable systems.',
+  s1:'Initial diagnosis',s1d:'Review of the process, repetitive tasks, current tools and improvement opportunities.',
+  s1i1:'Review of current manual processes',s1i2:'Detection of possible automations',
+  s1i3:'Prioritisation by impact, risk and complexity',s1i4:'Proposal for next phase if it makes sense',
+  s1p:'Initial diagnosis depending on case',s1cta:'Request initial diagnosis',
+  s2:'Internal AI system',s2d:'Phase-by-phase design and implementation of RAG, agents, automations and operational documentation.',
+  s2i1:'System architecture',s2i2:'Document base and query criteria',
+  s2i3:'AI agents or assistants according to real need',s2i4:'N8N automation and initial documentation',
+  s2p:'Implementation by phases · Budget according to scope',s2cta:'Design system',
+  s3:'Continuous improvement',s3d:'Support, review and evolution of the system to fix, expand and maintain without breaking what already works.',
+  s3i1:'Error review and correction',s3i2:'Improvement of prompts, flows and documentation',
+  s3i3:'New integrations by phases',s3i4:'Follow-up and optional maintenance',
+  s3p:'Optional maintenance · Budget according to scope',s3cta:'View maintenance',
+  cita1:'"AI does not fix poorly organised processes, it amplifies them. If the process is chaotic and automated, the result is faster chaos at a greater scale."',
+  cita2:'"If a task repeats, document it. If documented, it can be systematised. If systematised, it can be automated."',
+  fiscal:'Operating from Tenerife South. Tax and billing conditions are reviewed case by case depending on the type of client and operation.',
+  met_label:'06 — Process',met_sub:'First understand the problem. Then decide if AI adds real value.',
+  m1:'Understand',m1d:'Real process, friction, tools, repetitive tasks and objective.',
+  m2:'Evaluate',m2d:'Decide if AI, automation or a static website add real value.',
+  m3:'Design',m3d:'Define scope, deliverables, limits, risks and phases.',
+  m4:'Execute',m4d:'Implement in small, reviewable and maintainable phases.',
+  m5:'Measure',m5d:'Validate against agreed criteria, not against enthusiasm.',
+  m6:'Improve',m6d:'Expand, fix and document without breaking the system.',
+  vert_label:'07 — Sectors',vert_gold:'Sectors where <span class="g">I can add value</span>',
+  vert_sub:'Without claiming verified demand or invented data. Sectors where CDLAN work fits real problems.',
+  v1:'Hospitality & Tourism',v1d:'Bookings, FAQs, initial attention, internal documentation, message automation and professional websites.',
+  v2:'Clinics & Health',v2d:'Appointments, internal documentation, frequent questions and administrative processes. Always with privacy review and human escalation.',
+  v3:'Real estate',v3d:'Initial lead qualification, listings, frequent answers, follow-up and information organisation.',
+  v4:'Advisory & Law',v4d:'Internal document RAG, email triage, SOPs, administrative automation and operational documentation.',
+  v5:'E-commerce',v5d:'Post-sale support, FAQs, order tracking, stock and automation of repetitive tasks.',
+  v6:'Any business with repetitive processes',v6d:'If there are frequent manual tasks, it can be studied whether it makes sense to document, systematise, automate or create a clearer website.',
+  cont_gold:'Let&#39;s talk about <span style="color:var(--gold)">your system</span>',cont_sub:'Tell me which process you want to stop doing manually or which digital presence you need to improve.',
+  cont_nota:'No backend form · No stored data · Response depending on availability<br>Adeje, Tenerife South · Canarias · Remote services according to scope',
+  form_toggle:'Write me an email directly',
+  form_name:'Name',form_email:'Your email',form_subject:'Subject',form_msg:'Message',
+  form_send:'Send message →',form_note:'Opens your mail client ready to send · No backend · No stored data'
+,
+  cta_projects:'View projects',
+  cta_diag:'Request initial diagnosis',
+  sys_title_key:'The <span class="g">CDLAN</span> system',
+  met_title_key:'<span class="g">CDLAN</span> Method',
+  srv_gold:'How I can <span class="g">help you</span>',
+  vert_gold:'Sectors where <span class="g">I can add value</span>'},
+de:{
+  badge:'Angewandte KI · Automatisierung · RAG · Agenten · Web ohne Backend · Teneriffa Süd',
+  hero_claim:'Angewandte KI, Automatisierung und professionelle Webseiten, um verstreute Prozesse in klare, nützliche und wartbare Systeme zu verwandeln.',
+  hero_sub:'Ich entwerfe Lösungen mit RAG, KI-Agenten, N8N-Automatisierung, operativer Dokumentation und statischer Webentwicklung ohne Backend, wenn das Unternehmen keine unnötige Komplexität braucht.',
+  hero_trust:'Öffentliches Portfolio · Privater Motor · Keine erfundenen Kennzahlen · Keine falschen Kunden · Adeje, Teneriffa Süd',
+  nav_services:'Dienste',nav_projects:'Projekte',nav_method:'Methode',nav_sectors:'Branchen',nav_contact:'Kontakt',nav_cta:'Erste Diagnose',
+  ai_label:'00 — Künstliche Intelligenz',ai_title:'Das KI-Ökosystem',ai_title2:'das ich integriere',
+  ai_sub:'Jedes Werkzeug hat seinen Platz. Die Entscheidung kommt nicht aus dem Trend, sondern aus dem Problem, den Daten, dem Risiko und dem erwarteten Ergebnis.',
+  ai_agents:'KI-Agenten',ai_automat:'Automatisierung',ai_sec:'KI-Sicherheit',ai_dev:'KI-gestützte Entwicklung',
+  build_label:'01 — Kernleistungen',build_title:'Was ich <span class="g">baue</span>',build_sub:'Ich verkaufe keine einzelnen Tools. Ich entwerfe Systeme, die Wissen, Prozesse, Automatisierung und Ausführung verbinden.',
+  c1_title:'RAG & Internes Wissen',c1_text:'Systeme, um Dokumente, Prozesse und verstreutes Wissen in nützliche, abfragbare und wiederverwendbare Antworten zu verwandeln.',
+  c2_title:'KI-Agenten',c2_text:'Agenten für konkrete Aufgaben, Entscheidungsunterstützung und Reduzierung manueller Arbeit ohne übertriebene Versprechen.',
+  c3_title:'N8N Automatisierung',c3_text:'Workflows mit APIs, N8N, Webhooks und operativer Logik, um Tools zu verbinden und repetitive Aufgaben zu eliminieren.',
+  c4_title:'Voicebots & Chatbots',c4_text:'Mehrkanal-RAG-Chatbots und Voicebots in der Entwurfsphase für Reservierungen, Support oder Beratung wenn der Fall es rechtfertigt.',
+  c5_title:'Professionelle Webseiten ohne Backend',c5_text:'Schnelle, elegante und wartbare Webseiten für Unternehmen, Fachleute und Betriebe. Premium-Design, semantische Struktur und statische Veröffentlichung.',
+  sys_label:'02 — Prozess',sys_sub:'Ich fange nicht beim Tool an. Ich fange beim Problem, dem Prozess und dem validierbaren Ergebnis an.',
+  f1:'Diagnose',f1d:'Repetitive Aufgaben, operative Reibung und reale Chancen erkennen.',
+  f2:'Daten',f2d:'Quellen, Dokumente, Prozesse und operatives Wissen ordnen.',
+  f3d:'Information in eine abfragbare Basis mit kontrollierten und überprüfbaren Antworten umwandeln.',
+  f4:'KI-Agenten',f4d:'Assistenten entwerfen, die konkrete Aufgaben mit klaren Grenzen ausführen.',
+  f5:'Automatisierung',f5d:'Tools, APIs und Workflows verbinden.',
+  f6d:'Status, Ergebnisse und Verbesserungspunkte visualisieren wenn das Projekt es erfordert.',
+  f7:'Verbesserung',f7d:'Messen, korrigieren und erweitern ohne das System zu beschädigen.',
+  proj_gold:'Projekte <span class="g">&amp; Fälle</span>',proj_sub:'Technische Ehrlichkeit: Labor ist keine Kundenproduktion. Jede Karte zeigt den echten Status.',
+  pt1:'Terminalsystem',pt2:'Lokales KI-Labor',pt3:'Operative Workflows',pt4:'RAG-Dokumentation',
+  p5_type:'Professionelle Webentwicklung',p5_name:'Statische Webseiten für Unternehmen',
+  prob:'Problem',sol:'Lösung',res:'Ergebnis',
+  p1a:'Eine professionelle Terminal-Umgebung einzurichten kann fragil, manuell und schwer zu prüfen sein.',
+  p1b:'Backup/Restore-System mit Verifikation, Dry-Run und dokumentierten Sicherheitsgrenzen.',
+  p1c:'Reproduzierbarer, kontrollierterer und verifizierbarer Zustand.',
+  p2a:'Nur auf Cloud zu setzen kann Kosten, Datenexposition und Drittabhängigkeit erhöhen.',
+  p2b:'Lokales/hybrides Labor mit Beelink SER8 für Tests mit Agenten, Automatisierung, RAG und lokalen Modellen.',
+  p2c:'Technische Basis in Validierung. Benchmarks ausstehend bevor Leistung oder Kundeneinsatz versprochen wird.',
+  p3a:'Viele Stunden gehen durch repetitive Aufgaben verloren: Daten kopieren, Informationen organisieren.',
+  p3b:'Interne Workflows mit N8N, APIs und Webhooks zum Testen der Prozessautomatisierung.',
+  p3c:'Interne Basis zur Validierung wiederverwendbarer Muster vor dem Serviceangebot.',
+  p4a:'Technisches Wissen verstreut in Dokumenten, Notizen und Verfahren ohne schnelle Abfragemöglichkeit.',
+  p4b:'Vektorbasis und Ingestion-Flow zur Informationsabfrage mit Nachverfolgbarkeit und Überprüfung.',
+  p4c:'System in interner Validierung. Präzision hängt von Korpus, Tests und Akzeptanzkriterien ab.',
+  p5_prob:'Unternehmen, Fachleute und Betriebe brauchen klare, schnelle und wartbare digitale Präsenz ohne generische Builder.',
+  p5_sol:'Statische Webseiten mit Premium-Design, semantischer Struktur und Veröffentlichung auf GitHub Pages.',
+  p5_res:'Saubere und wartbare digitale Präsenz wenn kein Backend nötig ist. Diese Webseite dient als Beispiel.',
+  view_gh:'Auf GitHub ↗',view_arch:'Architektur ↗',view_wf:'Workflows ↗',view_case:'Fall ↗',
+  all_repos:'Repositorys auf GitHub ↗',
+  stack_gold:'aktueller Stack',stack_sub:'Werkzeuge im Dienst des Problems, nicht umgekehrt.',
+  sk1:'KI-Modelle',sk2:'Automatisierung',sk3:'RAG & Vektor',sk4:'Entwicklung',sk5:'Systeme',sk6:'Sicherheit',
+  srv_label:'05 — Angebot',srv_gold:'Wie ich <span class="g">helfen</span> kann',srv_sub:'Klare Dienste, konkrete Lieferungen und wartbare Systeme.',
+  s1:'Erste Diagnose',s1d:'Überprüfung des Prozesses, repetitiver Aufgaben, aktueller Tools und Verbesserungschancen.',
+  s1i1:'Überprüfung aktueller manueller Prozesse',s1i2:'Erkennung möglicher Automatisierungen',
+  s1i3:'Priorisierung nach Auswirkung, Risiko und Komplexität',s1i4:'Vorschlag für nächste Phase wenn sinnvoll',
+  s1p:'Erste Diagnose je nach Fall',s1cta:'Erste Diagnose anfragen',
+  s2:'Internes KI-System',s2d:'Phasenweise Entwurf und Implementierung von RAG, Agenten, Automatisierungen und operativer Dokumentation.',
+  s2i1:'Systemarchitektur',s2i2:'Dokumentenbasis und Abfragekriterien',
+  s2i3:'KI-Agenten oder Assistenten nach echtem Bedarf',s2i4:'N8N-Automatisierung und erste Dokumentation',
+  s2p:'Implementierung in Phasen · Budget nach Umfang',s2cta:'System entwerfen',
+  s3:'Kontinuierliche Verbesserung',s3d:'Support, Überprüfung und Weiterentwicklung des Systems.',
+  s3i1:'Fehlerüberprüfung und -korrektur',s3i2:'Verbesserung von Prompts, Flows und Dokumentation',
+  s3i3:'Neue Integrationen phasenweise',s3i4:'Nachverfolgung und optionale Wartung',
+  s3p:'Optionale Wartung · Budget nach Umfang',s3cta:'Wartung ansehen',
+  cita1:'«KI korrigiert keine schlecht organisierten Prozesse, sie verstärkt sie. Wenn der Prozess chaotisch ist und automatisiert wird, ist das Ergebnis schnelleres Chaos in größerem Ausmaß.»',
+  cita2:'«Wenn sich eine Aufgabe wiederholt, dokumentiert man sie. Wenn dokumentiert, kann man sie systematisieren. Wenn systematisiert, kann man sie automatisieren.»',
+  fiscal:'Betrieb von Teneriffa Süd. Steuer- und Abrechnungsbedingungen werden je nach Kundentyp und Vorgang fallweise geprüft.',
+  met_label:'06 — Prozess',met_sub:'Erst das Problem verstehen. Dann entscheiden ob KI echten Wert bringt.',
+  m1:'Verstehen',m1d:'Realer Prozess, Reibung, Tools, repetitive Aufgaben und Ziel.',
+  m2:'Bewerten',m2d:'Entscheiden ob KI, Automatisierung oder eine statische Webseite echten Wert bringen.',
+  m3:'Entwerfen',m3d:'Umfang, Lieferungen, Grenzen, Risiken und Phasen definieren.',
+  m4:'Ausführen',m4d:'In kleinen, überprüfbaren und wartbaren Phasen implementieren.',
+  m5:'Messen',m5d:'Gegen vereinbarte Kriterien validieren, nicht gegen Begeisterung.',
+  m6:'Verbessern',m6d:'Erweitern, korrigieren und dokumentieren ohne das System zu beschädigen.',
+  vert_label:'07 — Branchen',vert_gold:'Branchen, in denen <span class="g">ich Wert schaffen kann</span>',
+  vert_sub:'Ohne verifizierten Bedarf oder erfundene Daten zu behaupten. Branchen wo CDLAN-Arbeit zu echten Problemen passt.',
+  v1:'Gastgewerbe & Tourismus',v1d:'Buchungen, FAQs, erste Betreuung, interne Dokumentation, Nachrichtenautomatisierung und professionelle Webseiten.',
+  v2:'Kliniken & Gesundheit',v2d:'Termine, interne Dokumentation, häufige Fragen und administrative Prozesse. Immer mit Datenschutzprüfung und menschlicher Eskalation.',
+  v3:'Immobilien',v3d:'Erste Lead-Qualifizierung, Angebote, häufige Antworten, Nachverfolgung und Informationsorganisation.',
+  v4:'Beratung & Recht',v4d:'Internes Dokument-RAG, E-Mail-Triage, SOPs, administrative Automatisierung und operative Dokumentation.',
+  v5:'E-Commerce',v5d:'Nachverkaufssupport, FAQs, Bestellverfolgung, Bestand und Automatisierung repetitiver Aufgaben.',
+  v6:'Jedes Unternehmen mit repetitiven Prozessen',v6d:'Bei häufigen manuellen Aufgaben kann geprüft werden ob Dokumentieren, Systematisieren, Automatisieren oder eine klarere Webseite sinnvoll ist.',
+  cont_gold:'Sprechen wir über <span style="color:var(--gold)">Ihr System</span>',cont_sub:'Erzählen Sie mir, welchen Prozess Sie aufhören möchten manuell zu erledigen oder welche digitale Präsenz Sie verbessern möchten.',
+  cont_nota:'Kein Backend-Formular · Keine gespeicherten Daten · Antwort je nach Verfügbarkeit<br>Adeje, Teneriffa Süd · Kanarische Inseln · Remote-Dienste je nach Umfang',
+  form_toggle:'Mir direkt eine E-Mail schreiben',
+  form_name:'Name',form_email:'Ihre E-Mail',form_subject:'Betreff',form_msg:'Nachricht',
+  form_send:'Nachricht senden →',form_note:'Öffnet Ihren E-Mail-Client · Kein Backend · Keine Daten gespeichert'
+,
+  cta_projects:'Projekte ansehen',
+  cta_diag:'Erste Diagnose anfragen',
+  sys_title_key:'Das <span class="g">CDLAN</span>-System',
+  met_title_key:'<span class="g">CDLAN</span>-Methode',
+  srv_gold:'Wie ich <span class="g">helfen</span> kann',
+  vert_gold:'Branchen, in denen <span class="g">ich Wert schaffen kann</span>'},
+fr:{
+  badge:'IA Appliquée · Automatisation · RAG · Agents · Web sans backend · Ténérife Sud',
+  hero_claim:'IA appliquée, automatisation et sites web professionnels pour transformer des processus dispersés en systèmes clairs, utiles et maintenables.',
+  hero_sub:'Je conçois des solutions avec RAG, agents IA, automatisation N8N, documentation opérationnelle et développement web statique sans backend quand l\'entreprise n\'a pas besoin de complexité inutile.',
+  hero_trust:'Portfolio public · Moteur privé · Sans métriques inventées · Sans faux clients · Adeje, Ténérife Sud',
+  nav_services:'Services',nav_projects:'Projets',nav_method:'Méthode',nav_sectors:'Secteurs',nav_contact:'Contact',nav_cta:'Diagnostic initial',
+  ai_label:'00 — Intelligence Artificielle',ai_title:'L\'écosystème IA',ai_title2:'que j\'intègre',
+  ai_sub:'Chaque outil a sa place. La décision ne vient pas de la mode mais du problème, des données, du risque et du résultat attendu.',
+  ai_agents:'Agents IA',ai_automat:'Automatisation',ai_sec:'Sécurité IA',ai_dev:'Développement assisté par IA',
+  build_label:'01 — Services principaux',build_title:'Ce que je <span class="g">construis</span>',build_sub:'Je ne vends pas des outils isolés. Je conçois des systèmes connectant connaissance, processus, automatisation et exécution.',
+  c1_title:'RAG & Connaissance interne',c1_text:'Systèmes pour transformer documents, processus et connaissance dispersée en réponses utiles, interrogeables et réutilisables.',
+  c2_title:'Agents IA',c2_text:'Agents conçus pour des tâches concrètes, assister les décisions et réduire le travail manuel sans vendre de la magie.',
+  c3_title:'Automatisation N8N',c3_text:'Workflows avec APIs, N8N, webhooks et logique opérationnelle pour connecter les outils et éliminer les tâches répétitives.',
+  c4_title:'Voicebots & Chatbots',c4_text:'Chatbots RAG multicanaux et voicebots en phase de conception pour les réservations, le support ou l\'assistance quand le cas le justifie.',
+  c5_title:'Sites web professionnels sans backend',c5_text:'Sites web rapides, élégants et maintenables pour entreprises, professionnels et établissements. Design premium, structure sémantique et publication statique.',
+  sys_label:'02 — Processus',sys_sub:'Je ne pars pas de l\'outil. Je pars du problème, du processus et du résultat qui peut être validé.',
+  f1:'Diagnostic',f1d:'Détecter les tâches répétitives, la friction opérationnelle et les opportunités réelles.',
+  f2:'Données',f2d:'Organiser les sources, documents, processus et connaissances opérationnelles.',
+  f3d:'Transformer l\'information en une base interrogeable avec des réponses contrôlées et vérifiables.',
+  f4:'Agents IA',f4d:'Concevoir des assistants qui exécutent des tâches concrètes avec des limites claires.',
+  f5:'Automatisation',f5d:'Connecter les outils, APIs et flux de travail.',
+  f6d:'Visualiser l\'état, les résultats et les points d\'amélioration quand le projet le requiert.',
+  f7:'Améliorer',f7d:'Mesurer, corriger et étendre sans casser le système.',
+  proj_gold:'Projets <span class="g">&amp; cas</span>',proj_sub:'Honnêteté technique: le laboratoire n\'est pas la production client. Chaque carte indique le statut réel.',
+  pt1:'Système terminal',pt2:'Lab IA local',pt3:'Workflows opérationnels',pt4:'RAG documentaire',
+  p5_type:'Développement web professionnel',p5_name:'Sites statiques pour entreprises',
+  prob:'Problème',sol:'Solution',res:'Résultat',
+  p1a:'Configurer et restaurer un environnement terminal professionnel peut être fragile, manuel et difficile à auditer.',
+  p1b:'Système de backup/restauration avec vérification, dry-run et limites de sécurité documentées.',
+  p1c:'Environnement plus reproductible, contrôlé et vérifiable.',
+  p2a:'Dépendre uniquement du cloud peut augmenter les coûts, l\'exposition des données et la dépendance tierce.',
+  p2b:'Laboratoire local/hybride avec Beelink SER8 pour tester agents, automatisation, RAG et modèles locaux.',
+  p2c:'Base technique en validation. Benchmarks en attente avant de promettre des performances ou un usage client.',
+  p3a:'Beaucoup d\'heures se perdent dans des tâches répétitives: copier des données, organiser des informations.',
+  p3b:'Workflows internes avec N8N, APIs et webhooks pour tester l\'automatisation de processus.',
+  p3c:'Base interne pour valider des modèles réutilisables avant de les proposer comme service.',
+  p4a:'Connaissance technique dispersée dans des documents, notes et procédures sans méthode rapide d\'interrogation.',
+  p4b:'Base vectorielle et flux d\'ingestion pour interroger l\'information avec traçabilité et révision.',
+  p4c:'Système en validation interne. La précision dépend du corpus, des tests et des critères d\'acceptation.',
+  p5_prob:'Les entreprises, professionnels et établissements ont besoin d\'une présence numérique claire, rapide et maintenable sans dépendre de constructeurs génériques.',
+  p5_sol:'Sites web statiques avec design premium, structure sémantique et publication sur GitHub Pages ou hébergement statique.',
+  p5_res:'Présence numérique propre et maintenable quand le backend n\'est pas nécessaire. Ce site sert d\'exemple.',
+  view_gh:'Voir sur GitHub ↗',view_arch:'Architecture ↗',view_wf:'Workflows ↗',view_case:'Cas ↗',
+  all_repos:'Voir les dépôts sur GitHub ↗',
+  stack_gold:'stack actuel',stack_sub:'Outils au service du problème, pas l\'inverse.',
+  sk1:'Modèles IA',sk2:'Automatisation',sk3:'RAG & Vecteur',sk4:'Développement',sk5:'Systèmes',sk6:'Sécurité',
+  srv_label:'05 — Offre',srv_gold:'Comment je peux <span class="g">aider</span>',srv_sub:'Services clairs, livrables concrets et systèmes maintenables.',
+  s1:'Diagnostic initial',s1d:'Révision du processus, tâches répétitives, outils actuels et opportunités d\'amélioration.',
+  s1i1:'Révision des processus manuels actuels',s1i2:'Détection des automatisations possibles',
+  s1i3:'Priorisation par impact, risque et complexité',s1i4:'Proposition de phase suivante si pertinent',
+  s1p:'Diagnostic initial selon le cas',s1cta:'Demander un diagnostic initial',
+  s2:'Système IA interne',s2d:'Conception et implémentation par phases de RAG, agents, automatisations et documentation opérationnelle.',
+  s2i1:'Architecture du système',s2i2:'Base documentaire et critères de consultation',
+  s2i3:'Agents IA ou assistants selon le besoin réel',s2i4:'Automatisation N8N et documentation initiale',
+  s2p:'Implémentation par phases · Budget selon la portée',s2cta:'Concevoir le système',
+  s3:'Amélioration continue',s3d:'Support, révision et évolution du système pour corriger, étendre et maintenir sans casser ce qui fonctionne.',
+  s3i1:'Révision et correction des erreurs',s3i2:'Amélioration des prompts, flux et documentation',
+  s3i3:'Nouvelles intégrations par phases',s3i4:'Suivi et maintenance optionnelle',
+  s3p:'Maintenance optionnelle · Budget selon la portée',s3cta:'Voir la maintenance',
+  cita1:'«L\'IA ne corrige pas les processus mal organisés, elle les amplifie. Si le processus est chaotique et automatisé, le résultat est un chaos plus rapide à plus grande échelle.»',
+  cita2:'«Si une tâche se répète, on la documente. Si documentée, on peut la systématiser. Si systématisée, on peut l\'automatiser.»',
+  fiscal:'Opérant depuis Ténérife Sud. Les conditions fiscales et de facturation sont examinées au cas par cas selon le type de client et d\'opération.',
+  met_label:'06 — Processus',met_sub:'D\'abord comprendre le problème. Ensuite décider si l\'IA apporte une valeur réelle.',
+  m1:'Comprendre',m1d:'Processus réel, friction, outils, tâches répétitives et objectif.',
+  m2:'Évaluer',m2d:'Décider si IA, automatisation ou un site statique apportent une valeur réelle.',
+  m3:'Concevoir',m3d:'Définir portée, livrables, limites, risques et phases.',
+  m4:'Exécuter',m4d:'Implémenter en petites phases vérifiables et maintenables.',
+  m5:'Mesurer',m5d:'Valider selon des critères convenus, pas selon l\'enthousiasme.',
+  m6:'Améliorer',m6d:'Étendre, corriger et documenter sans casser le système.',
+  vert_label:'07 — Secteurs',vert_gold:'Secteurs où <span class="g">je peux apporter de la valeur</span>',
+  vert_sub:'Sans affirmer une demande vérifiée ni des données inventées. Secteurs où le travail de CDLAN correspond à des problèmes réels.',
+  v1:'Hôtellerie & Tourisme',v1d:'Réservations, FAQs, attention initiale, documentation interne, automatisation de messages et sites professionnels.',
+  v2:'Cliniques & Santé',v2d:'Rendez-vous, documentation interne, questions fréquentes et processus administratifs. Toujours avec révision de confidentialité et escalade humaine.',
+  v3:'Immobilier',v3d:'Qualification initiale de leads, fiches, réponses fréquentes, suivi et organisation d\'information.',
+  v4:'Conseil & Droit',v4d:'RAG documentaire interne, tri des e-mails, SOPs, automatisation administrative et documentation opérationnelle.',
+  v5:'E-commerce',v5d:'Support après-vente, FAQs, suivi des commandes, stock et automatisation des tâches répétitives.',
+  v6:'Toute entreprise avec des processus répétitifs',v6d:'Si des tâches manuelles fréquentes existent, on peut étudier s\'il convient de documenter, systématiser, automatiser ou créer un site plus clair.',
+  cont_gold:'Parlons de <span style="color:var(--gold)">votre système</span>',cont_sub:'Dites-moi quel processus vous voulez arrêter de faire manuellement ou quelle présence numérique vous souhaitez améliorer.',
+  cont_nota:'Sans formulaire backend · Sans données stockées · Réponse selon disponibilité<br>Adeje, Ténérife Sud · Canaries · Services à distance selon portée',
+  form_toggle:'M\'écrire un email directement',
+  form_name:'Nom',form_email:'Votre email',form_subject:'Sujet',form_msg:'Message',
+  form_send:'Envoyer le message →',form_note:'Ouvre votre client de messagerie prêt · Sans backend · Sans données stockées',
+  cta_projects:'Voir les projets',
+  cta_diag:'Demander un diagnostic initial',
+  sys_title_key:'Le système <span class="g">CDLAN</span>',
+  met_title_key:'Méthode <span class="g">CDLAN</span>'
+}
+};
+
+let currentLang='es';
+function setLang(lang){
+  if(!T[lang])return;
+  currentLang=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.toggle('active',b.textContent===lang.toUpperCase())});
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const key=el.getAttribute('data-t');
+    if(T[lang][key]!==undefined){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=T[lang][key];}
+      else{el.innerHTML=T[lang][key];}
+    }
+  });
+  // Terminal re-type
+  startTerminal(lang);
+}
+
+/* ══════════════════════════════════════════
+   MATRIX RAIN CANVAS
+══════════════════════════════════════════ */
+const canvas=document.getElementById('neural-canvas');
+const ctx=canvas.getContext('2d');
+
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resizeCanvas();
+window.addEventListener('resize',()=>{resizeCanvas();initMatrix();});
+
+const CHARS='01アイウエオカキクケコサシスセソタチツテトナニヌネノABCDEFGH∑∂∇∈∉∩∪⊂⊃λΨΩαβγδεζ▓▒░│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬';
+let drops=[];
+const FONT_SIZE=12;
+
+function initMatrix(){
+  drops=[];
+  const cols=Math.floor(canvas.width/FONT_SIZE);
+  for(let i=0;i<cols;i++){
+    drops.push({y:Math.random()*-canvas.height/FONT_SIZE,speed:.3+Math.random()*.7,opacity:Math.random()*.6+.2,gold:Math.random()<.25});
+  }
+}
+initMatrix();
+
+function drawMatrix(){
+  ctx.fillStyle='rgba(0,0,0,0.05)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  drops.forEach((d,i)=>{
+    const char=CHARS[Math.floor(Math.random()*CHARS.length)];
+    const x=i*FONT_SIZE;
+    const y=d.y*FONT_SIZE;
+    if(d.gold){
+      ctx.fillStyle=`rgba(212,175,55,${d.opacity})`;
+    } else if(Math.random()<.05){
+      ctx.fillStyle=`rgba(139,0,0,${d.opacity*.8})`;
+    } else {
+      ctx.fillStyle=`rgba(212,175,55,${d.opacity*.3})`;
+    }
+    ctx.font=`${FONT_SIZE}px 'JetBrains Mono',monospace`;
+    ctx.fillText(char,x,y);
+    d.y+=d.speed;
+    if(d.y*FONT_SIZE>canvas.height&&Math.random()>.975){
+      d.y=0;
+      d.gold=Math.random()<.25;
+      d.opacity=Math.random()*.6+.2;
+    }
+  });
+  requestAnimationFrame(drawMatrix);
+}
+drawMatrix();
+
+/* ══════════════════════════════════════════
+   CURSOR
+══════════════════════════════════════════ */
+if(window.innerWidth>768&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+  const cur=document.getElementById('cur');
+  const curR=document.getElementById('cur-r');
+  const curG=document.getElementById('cur-glow');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  function animCursor(){
+    rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+    cur.style.left=mx+'px'; cur.style.top=my+'px';
+    curR.style.left=rx+'px'; curR.style.top=ry+'px';
+    curG.style.left=mx+'px'; curG.style.top=my+'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+  document.querySelectorAll('a,button,.card,.proj-card,.vert-card,.ai-branch').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.width='12px';cur.style.height='12px';curR.style.width='44px';curR.style.height='44px';curG.style.opacity='1';});
+    el.addEventListener('mouseleave',()=>{cur.style.width='6px';cur.style.height='6px';curR.style.width='28px';curR.style.height='28px';curG.style.opacity='.5';});
+  });
+}
+
+/* ══════════════════════════════════════════
+   PROGRESS BAR
+══════════════════════════════════════════ */
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  document.getElementById('progress').style.width=pct+'%';
+});
+
+/* ══════════════════════════════════════════
+   MOBILE NAV
+══════════════════════════════════════════ */
+function toggleMob(){document.getElementById('mobNav').classList.toggle('open');}
+function closeMob(){document.getElementById('mobNav').classList.remove('open');}
+
+/* ══════════════════════════════════════════
+   TERMINAL
+══════════════════════════════════════════ */
+const TERM_LINES={
+  es:[
+    {t:'> CDLAN system initialized...',c:'cmd'},
+    {t:'> Focus: IA aplicada · automatización · RAG · web estática',c:'ice'},
+    {t:'> Stack: N8N · Qdrant · GitHub · Linux · documentación',c:''},
+    {t:'> Lab local: Beelink SER8 en incorporación · benchmarks pendientes',c:''},
+    {t:'> Frontend público: sin backend · sin datos almacenados',c:''},
+    {t:'> Status: portfolio en validación profesional ✓',c:'ok'},
+    {t:'> Next: sistemas útiles, alcance claro, evidencia real',c:'cmd'},
+  ],
+  en:[
+    {t:'> CDLAN system initialized...',c:'cmd'},
+    {t:'> Focus: applied AI · automation · RAG · static web',c:'ice'},
+    {t:'> Stack: N8N · Qdrant · GitHub · Linux · documentation',c:''},
+    {t:'> Local lab: Beelink SER8 in incorporation · benchmarks pending',c:''},
+    {t:'> Public frontend: no backend · no stored data',c:''},
+    {t:'> Status: portfolio under professional validation ✓',c:'ok'},
+    {t:'> Next: useful systems, clear scope, real evidence',c:'cmd'},
+  ],
+  de:[
+    {t:'> CDLAN System initialisiert...',c:'cmd'},
+    {t:'> Fokus: angewandte KI · Automatisierung · RAG · statische Web',c:'ice'},
+    {t:'> Stack: N8N · Qdrant · GitHub · Linux · Dokumentation',c:''},
+    {t:'> Lokales Lab: Beelink SER8 in Einrichtung · Benchmarks ausstehend',c:''},
+    {t:'> Öffentliches Frontend: kein Backend · keine Daten gespeichert',c:''},
+    {t:'> Status: Portfolio in professioneller Validierung ✓',c:'ok'},
+    {t:'> Weiter: nützliche Systeme, klarer Umfang, echte Belege',c:'cmd'},
+  ],
+  fr:[
+    {t:'> Système CDLAN initialisé...',c:'cmd'},
+    {t:'> Focus: IA appliquée · automatisation · RAG · web statique',c:'ice'},
+    {t:'> Stack: N8N · Qdrant · GitHub · Linux · documentation',c:''},
+    {t:'> Lab local: Beelink SER8 en intégration · benchmarks en attente',c:''},
+    {t:'> Frontend public: sans backend · sans données stockées',c:''},
+    {t:'> Statut: portfolio en validation professionnelle ✓',c:'ok'},
+    {t:'> Suite: systèmes utiles, périmètre clair, preuves réelles',c:'cmd'},
+  ],
+};
+
+let termTimer=null;
+function startTerminal(lang){
+  const el=document.getElementById('termOut');
+  el.innerHTML='';
+  if(termTimer)clearTimeout(termTimer);
+  const lines=TERM_LINES[lang]||TERM_LINES.es;
+  let li=0,ci=0;
+  function type(){
+    if(li>=lines.length){
+      const cur=document.createElement('span');cur.className='t-cur';el.appendChild(cur);return;
+    }
+    if(ci===0){
+      const p=document.createElement('div');p.className='t-line';
+      const sp=document.createElement('span');if(lines[li].c)sp.className=lines[li].c;
+      sp.id='tl'+li;p.appendChild(sp);el.appendChild(p);
+    }
+    const sp=document.getElementById('tl'+li);
+    sp.textContent=lines[li].t.substring(0,ci+1);
+    ci++;
+    if(ci>=lines[li].t.length){li++;ci=0;termTimer=setTimeout(type,100);}
+    else{termTimer=setTimeout(type,18);}
+  }
+  termTimer=setTimeout(type,600);
+}
+startTerminal('es');
+
+/* ══════════════════════════════════════════
+   GSAP ANIMATIONS
+══════════════════════════════════════════ */
+const PR=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(!PR){
+  gsap.registerPlugin(ScrollTrigger);
+
+  // HERO ENTRANCE
+  const htl=gsap.timeline({delay:.15});
+  htl
+    .from('#hBadge',{opacity:0,y:16,duration:.6,ease:'power2.out'})
+    .from('.hero-name .w',{opacity:0,y:50,rotationX:-50,stagger:.1,duration:.9,ease:'back.out(1.5)'},'-=.3')
+    .from('.hero-claim',{opacity:0,y:18,duration:.7,ease:'power2.out'},'-=.4')
+    .from('.hero-sub',{opacity:0,y:18,duration:.6,ease:'power2.out'},'-=.4')
+    .from('.hero-ctas',{opacity:0,y:18,duration:.6,ease:'power2.out'},'-=.3')
+    .from('.h-terminal',{opacity:0,y:24,scale:.97,duration:.8,ease:'power2.out'},'-=.3')
+    .from('.hero-trust',{opacity:0,duration:.6},'-=.2');
+
+  // HERO PARALLAX
+  gsap.to('.hero-bg-layer',{yPercent:-25,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-grid-overlay',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+
+  // MOUSE PARALLAX
+  document.addEventListener('mousemove',e=>{
+    const dx=(e.clientX/window.innerWidth-.5)*18;
+    const dy=(e.clientY/window.innerHeight-.5)*8;
+    gsap.to('.hero-bg-layer',{x:dx,y:dy,duration:1.8,ease:'power1.out'});
+  });
+
+  // SCROLL REVEALS
+  gsap.utils.toArray('.rv').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:36},{opacity:1,y:0,duration:.85,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 89%',toggleActions:'play none none none'}});
+  });
+  gsap.utils.toArray('.rv-l').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,x:-28},{opacity:1,x:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 89%',toggleActions:'play none none none'}});
+  });
+  gsap.utils.toArray('.rv-r').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,x:28},{opacity:1,x:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 89%',toggleActions:'play none none none'}});
+  });
+  gsap.utils.toArray('.rv-s').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,scale:.93},{opacity:1,scale:1,duration:1,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+  });
+
+  // AI BRANCHES STAGGER
+  gsap.utils.toArray('.ai-branch').forEach((el,i)=>{
+    gsap.fromTo(el,{opacity:0,y:30,scale:.97},{opacity:1,y:0,scale:1,duration:.65,delay:i*.07,ease:'power2.out',scrollTrigger:{trigger:'.ai-branches',start:'top 82%',toggleActions:'play none none none'}});
+  });
+
+  // FLOW STEPS — nueva estructura grid
+  gsap.utils.toArray('.f-step').forEach((step,i)=>{
+    gsap.fromTo(step,
+      {opacity:0,x:-20},
+      {opacity:1,x:0,duration:.55,delay:i*.08,ease:'power2.out',
+        scrollTrigger:{trigger:'#flowWrap',start:'top 82%',toggleActions:'play none none none',
+          onEnter:()=>setTimeout(()=>step.classList.add('lit'),i*80+150)}}
+    );
+  });
+
+  // PROJECTS STAGGER
+  gsap.utils.toArray('.proj-card').forEach((c,i)=>{
+    gsap.fromTo(c,{opacity:0,y:45,scale:.97},{opacity:1,y:0,scale:1,duration:.7,delay:i*.1,ease:'power2.out',
+      scrollTrigger:{trigger:'.proj-g',start:'top 83%',toggleActions:'play none none none'}});
+  });
+
+  // CHIPS STAGGER
+  gsap.utils.toArray('.sc').forEach((c,i)=>{
+    gsap.fromTo(c,{opacity:0,scale:.75},{opacity:1,scale:1,duration:.4,delay:i*.025,ease:'back.out(1.4)',
+      scrollTrigger:{trigger:'#stack-sec',start:'top 80%',toggleActions:'play none none none'}});
+  });
+
+  // CONTACT PARALLAX
+  gsap.fromTo('.cont-title',{opacity:0,y:50,scale:.96},{opacity:1,y:0,scale:1,duration:1.3,ease:'power3.out',
+    scrollTrigger:{trigger:'#contacto',start:'top 78%',toggleActions:'play none none none'}});
+
+  // ORBIT ROTATION accents
+  gsap.to('#ring2',{rotation:360,duration:20,ease:'none',repeat:-1,transformOrigin:'50% 50%'});
+  gsap.to('#ring3',{rotation:-360,duration:35,ease:'none',repeat:-1,transformOrigin:'50% 50%'});
+}
+
+/* ══════════════════════════════════════════
+   CONTACT FORM — SEGURO
+══════════════════════════════════════════ */
+function openContactForm(){
+  const panel=document.getElementById('formPanel');
+  const toggle=document.getElementById('formToggle');
+  if(panel&&!panel.classList.contains('open')){
+    panel.classList.add('open');
+    toggle.classList.add('open');
+  }
+}
+function toggleForm(){
+  const panel=document.getElementById('formPanel');
+  const toggle=document.getElementById('formToggle');
+  if(!panel||!toggle)return;
+  panel.classList.toggle('open');
+  toggle.classList.toggle('open');
+}
+
+/*
+ * sanitize(str)
+ * Elimina caracteres peligrosos para HTML/URL.
+ * Caracteres eliminados: < > " ' &
+ * Límite: 500 caracteres por campo.
+ */
+function sanitize(str) {
+  if (typeof str !== 'string') return '';
+  var result = '';
+  for (var i = 0; i < str.length && i < 500; i++) {
+    var c = str[i];
+    if (c !== '<' && c !== '>' && c !== '"' && c !== "'" && c !== '&') {
+      result += c;
+    }
+  }
+  return result.trim();
+}
+
+/*
+ * sanitizeSubject(str)
+ * Como sanitize() pero también elimina saltos de línea
+ * para prevenir SMTP header injection en el campo asunto.
+ */
+function sanitizeSubject(str) {
+  return sanitize(str).replace(/[\r\n\t]/g, ' ');
+}
+
+/* validateEmail — validación básica de formato */
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+}
+
+function sendMail(e){
+  e.preventDefault();
+  var name    = sanitize(document.getElementById('fName').value    || '');
+  var email   = sanitize(document.getElementById('fEmail').value   || '');
+  var subject = sanitizeSubject(document.getElementById('fSubject').value || 'Contacto CDLAN');
+  var msg     = sanitize(document.getElementById('fMsg').value     || '');
+  /* Validación básica email */
+  if (!validateEmail(email)) {
+    alert('Por favor introduce un email válido.');
+    return;
+  }
+  if (!name || !msg) {
+    alert('Por favor completa nombre y mensaje.');
+    return;
+  }
+  const body=`Nombre: ${name}\nEmail de respuesta: ${email}\n\n${msg}`;
+  /* encodeURIComponent previene header injection */
+  window.location.href=`mailto:contacto.cdlan@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+</script>
 </body>
 </html>
