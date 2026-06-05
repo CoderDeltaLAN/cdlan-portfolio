@@ -70,6 +70,33 @@ if missing:
 print("[OK] index.html basic parse/check passed")
 PY
 
+printf '\n== SEO/security metadata check ==\n'
+seo_stop=0
+
+grep -Fq '<link rel="canonical" href="https://coderdeltalan.github.io/cdlan-portfolio/">' index.html || { printf '[FAIL] missing canonical\n'; seo_stop=1; }
+grep -Fq '<meta name="robots" content="index, follow, max-image-preview:large">' index.html || { printf '[FAIL] missing robots\n'; seo_stop=1; }
+grep -Fq '<meta name="author" content="Yosvel Delta / CDLAN">' index.html || { printf '[FAIL] missing author\n'; seo_stop=1; }
+grep -Fq '<meta property="og:title"' index.html || { printf '[FAIL] missing og:title\n'; seo_stop=1; }
+grep -Fq '<meta property="og:description"' index.html || { printf '[FAIL] missing og:description\n'; seo_stop=1; }
+grep -Fq '<meta property="og:type" content="website">' index.html || { printf '[FAIL] missing og:type\n'; seo_stop=1; }
+grep -Fq '<meta property="og:url" content="https://coderdeltalan.github.io/cdlan-portfolio/">' index.html || { printf '[FAIL] missing og:url\n'; seo_stop=1; }
+grep -Fq '<meta name="twitter:card" content="summary">' index.html || { printf '[FAIL] missing twitter summary card\n'; seo_stop=1; }
+grep -Fq '<meta name="theme-color" content="#000000">' index.html || { printf '[FAIL] missing theme-color\n'; seo_stop=1; }
+grep -Fq '<meta name="color-scheme" content="dark">' index.html || { printf '[FAIL] missing color-scheme\n'; seo_stop=1; }
+grep -Fq '<meta name="referrer" content="strict-origin-when-cross-origin">' index.html || { printf '[FAIL] missing referrer policy\n'; seo_stop=1; }
+grep -Fq 'Content-Security-Policy' index.html || { printf '[FAIL] missing Content-Security-Policy\n'; seo_stop=1; }
+
+if grep -Eq 'http-equiv="X-Frame-Options"|http-equiv="X-XSS-Protection"|http-equiv="Cross-Origin-Opener-Policy"|http-equiv="Cross-Origin-Resource-Policy"|http-equiv="Permissions-Policy"|http-equiv="X-Content-Type-Options"|summary_large_image|twitter:image' index.html; then
+  printf '[FAIL] misleading security/image metadata present\n'
+  seo_stop=1
+fi
+
+if [ "$seo_stop" -eq 0 ]; then
+  printf '[OK] SEO/security metadata passed\n'
+else
+  stop=1
+fi
+
 printf '\n== workflow trigger check ==\n'
 if grep -q 'chore/\*\*' .github/workflows/verify.yml && grep -q 'feat/\*\*' .github/workflows/verify.yml && grep -q 'fix/\*\*' .github/workflows/verify.yml && grep -q 'pull_request:' .github/workflows/verify.yml; then
   printf '[OK] workflow branch triggers found\n'
