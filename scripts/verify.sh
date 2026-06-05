@@ -97,6 +97,23 @@ else
   stop=1
 fi
 
+printf '\n== accessibility baseline check ==\n'
+a11y_stop=0
+
+grep -Fq '<label for="fName" data-t="form_name">' index.html || { printf '[FAIL] missing label for fName\n'; a11y_stop=1; }
+grep -Fq '<label for="fEmail" data-t="form_email">' index.html || { printf '[FAIL] missing label for fEmail\n'; a11y_stop=1; }
+grep -Fq '<label for="fSubject" data-t="form_subject">' index.html || { printf '[FAIL] missing label for fSubject\n'; a11y_stop=1; }
+grep -Fq '<label for="fMsg" data-t="form_msg">' index.html || { printf '[FAIL] missing label for fMsg\n'; a11y_stop=1; }
+grep -Fq '@media (pointer:coarse), (hover:none)' index.html || { printf '[FAIL] missing touch cursor fallback\n'; a11y_stop=1; }
+grep -Fq '.cursor-dot,.cursor-ring{display:none!important}' index.html || { printf '[FAIL] missing custom cursor hide fallback\n'; a11y_stop=1; }
+grep -Fq '@media(prefers-reduced-motion:reduce)' index.html || { printf '[FAIL] missing reduced motion media query\n'; a11y_stop=1; }
+
+if [ "$a11y_stop" -eq 0 ]; then
+  printf '[OK] accessibility baseline passed\n'
+else
+  stop=1
+fi
+
 printf '\n== workflow trigger check ==\n'
 if grep -q 'chore/\*\*' .github/workflows/verify.yml && grep -q 'feat/\*\*' .github/workflows/verify.yml && grep -q 'fix/\*\*' .github/workflows/verify.yml && grep -q 'pull_request:' .github/workflows/verify.yml; then
   printf '[OK] workflow branch triggers found\n'
