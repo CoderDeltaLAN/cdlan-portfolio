@@ -454,6 +454,11 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
   .vert-g{grid-template-columns:1fr 1fr}
   .ai-branches{grid-template-columns:repeat(2,1fr)}
 }
+@media (pointer:coarse), (hover:none){
+  body{cursor:auto}
+  .cursor-dot,.cursor-ring{display:none!important}
+}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   #cur,#cur-r,#cur-glow{display:none}
@@ -879,19 +884,19 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
       <div class="cont-form-panel" id="formPanel">
         <form class="cont-form" id="contactForm" onsubmit="sendMail(event)">
           <div>
-            <label data-t="form_name">Nombre</label>
+            <label for="fName" data-t="form_name">Nombre</label>
             <input type="text" id="fName" placeholder="Tu nombre o empresa" required>
           </div>
           <div>
-            <label data-t="form_email">Tu email</label>
+            <label for="fEmail" data-t="form_email">Tu email</label>
             <input type="email" id="fEmail" placeholder="tu@email.com" required>
           </div>
           <div>
-            <label data-t="form_subject">Asunto</label>
+            <label for="fSubject" data-t="form_subject">Asunto</label>
             <input type="text" id="fSubject" placeholder="Diagnóstico IA / Consulta / Propuesta...">
           </div>
           <div>
-            <label data-t="form_msg">Mensaje</label>
+            <label for="fMsg" data-t="form_msg">Mensaje</label>
             <textarea id="fMsg" placeholder="Cuéntame tu proceso, tu negocio, qué haces manualmente y qué resultado te gustaría conseguir." required></textarea>
           </div>
           <button type="submit" class="cont-form-send" data-t="form_send">Enviar mensaje →</button>
