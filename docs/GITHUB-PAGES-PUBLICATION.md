@@ -1,89 +1,83 @@
-# GitHub Pages Publication Plan
+# GitHub Pages Publication Status
 
-This document defines how CDLAN Portfolio will be published with GitHub Pages.
+This document defines the current GitHub Pages publication state for CDLAN Portfolio.
 
-GitHub Pages must not be activated until explicitly approved.
-
-## Expected public URL
+## Public URL
 
 https://coderdeltalan.github.io/cdlan-portfolio/
 
 ## Current status
 
-Pages is not enabled yet.
+GitHub Pages is enabled.
 
-The repository currently contains a safe placeholder page. The final landing page must be reviewed before publication.
+Verified state:
 
-## Publication options
+- status: built
+- source branch: main
+- source path: /
+- public: true
+- HTTPS enforced: true
+- HTTP response: 200
+- published title verified
 
-### Option A — Publish placeholder
+## Published source
 
-Use this only if a temporary public presence is needed before the final landing page is ready.
-
-Requirements:
-
-- placeholder reviewed;
-- no secrets;
-- no private data;
-- no unfinished contact placeholders;
-- no fake claims;
-- CI green on main;
-- explicit approval before activation.
-
-### Option B — Wait for final landing page
-
-Preferred option.
-
-Use this if the final premium landing page will be integrated soon.
-
-Requirements:
-
-- final HTML reviewed;
-- content claims reviewed;
-- links reviewed;
-- contact reviewed;
-- accessibility basics reviewed;
-- mobile layout reviewed;
-- performance reviewed;
-- no secrets;
-- no tracking unless approved;
-- CI green on main;
-- explicit approval before activation.
-
-## Activation checklist
-
-Before enabling GitHub Pages:
-
-- main clean;
-- origin/main synchronized;
-- CI green for the exact main SHA;
-- index.html reviewed;
-- README and docs aligned;
-- no secrets;
-- no placeholders;
-- publication decision confirmed.
-
-## Source
-
-Expected source:
+GitHub Pages source:
 
 - branch: main
 - path: root
 
-## Post-activation verification
+## Publication verification
 
-After enabling Pages:
+The published site has been checked for:
 
-- verify Pages API status;
-- verify published URL;
-- verify no 404;
-- verify CSS loads;
-- verify JavaScript loads;
-- verify mobile rendering;
-- verify no private material is visible.
+- HTTP 200 response;
+- expected public URL;
+- expected HTML title;
+- canonical URL;
+- robots metadata;
+- Open Graph metadata;
+- Twitter card metadata;
+- frontend CSP metadata;
+- contact form labels;
+- no backend;
+- no stored form data.
 
-## Rule
+## Current public URL
+
+The expected and active URL is:
+
+https://coderdeltalan.github.io/cdlan-portfolio/
+
+## Publication rule
 
 Publishing is not a technical default.
 
 Publishing is a business decision.
+
+This site was published only after:
+
+- final landing page integration;
+- local verification;
+- GitHub Actions verification;
+- SEO/security metadata hardening;
+- accessibility baseline hardening;
+- structural verification hardening;
+- final publication audit;
+- explicit publication approval.
+
+## Maintenance rule
+
+Future publication changes must keep:
+
+- main clean;
+- origin/main synchronized;
+- CI green;
+- scripts/verify.sh passing;
+- no secrets;
+- no private prompts;
+- no backend internals;
+- no SaaS internals;
+- no unsupported claims;
+- no generated/vendor artifacts;
+- README unchanged until final documentation phase.
