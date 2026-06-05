@@ -1,0 +1,23 @@
+name: Verify
+
+on:
+  push:
+    branches:
+      - main
+      - chore/**
+      - feat/**
+      - fix/**
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run local verification
+        run: bash scripts/verify.sh

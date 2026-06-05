@@ -1,0 +1,17 @@
+node_modules/
+dist/
+build/
+.cache/
+.vite/
+.astro/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
